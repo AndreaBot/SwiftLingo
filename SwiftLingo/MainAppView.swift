@@ -14,8 +14,20 @@ struct MainAppView: View {
     @Binding var path: [NavigationScreens]
     
     var body: some View {
-        Button("Logout") {
-            logoutUser()
+        TabView {
+            TranslatorView()
+                .tabItem {
+                    Label("SwiftLingo", systemImage: "swift")
+                }
+        }
+        .toolbar {
+            if Auth.auth().currentUser != nil {
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Logout") {
+                        logoutUser()
+                    }
+                }
+            }
         }
     }
     

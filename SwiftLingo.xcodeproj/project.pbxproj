@@ -17,6 +17,10 @@
 		621EFE152BE425B8004F44B5 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE142BE425B8004F44B5 /* MainAppView.swift */; };
 		621EFE172BE42942004F44B5 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE162BE42942004F44B5 /* RegisterView.swift */; };
 		621EFE192BE42951004F44B5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE182BE42951004F44B5 /* LoginView.swift */; };
+		624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF02BE5689200ACEED2 /* TranslatorView.swift */; };
+		624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF22BE56C5900ACEED2 /* TranslatorViewModel.swift */; };
+		624CDFF52BE56C8800ACEED2 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */; };
+		624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */; };
 		A41041900792BC5BF20EC9AE /* Pods_SwiftLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		621EFE142BE425B8004F44B5 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		621EFE162BE42942004F44B5 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		621EFE182BE42951004F44B5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		624CDFF02BE5689200ACEED2 /* TranslatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorView.swift; sourceTree = "<group>"; };
+		624CDFF22BE56C5900ACEED2 /* TranslatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewModel.swift; sourceTree = "<group>"; };
+		624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationData.swift; sourceTree = "<group>"; };
 		8DDA5ECDD366FA70222842A9 /* Pods-SwiftLingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.debug.xcconfig"; sourceTree = "<group>"; };
 		9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,6 +93,10 @@
 				621EFE162BE42942004F44B5 /* RegisterView.swift */,
 				621EFE182BE42951004F44B5 /* LoginView.swift */,
 				621EFE142BE425B8004F44B5 /* MainAppView.swift */,
+				624CDFF02BE5689200ACEED2 /* TranslatorView.swift */,
+				624CDFF22BE56C5900ACEED2 /* TranslatorViewModel.swift */,
+				624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */,
+				624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */,
 				621EFE102BE4248F004F44B5 /* NavigationScreens.swift */,
 				621EFE042BE41DB6004F44B5 /* Assets.xcassets */,
 				621EFE0E2BE41EB5004F44B5 /* GoogleService-Info.plist */,
@@ -227,10 +239,14 @@
 				621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */,
 				621EFE192BE42951004F44B5 /* LoginView.swift in Sources */,
 				621EFE152BE425B8004F44B5 /* MainAppView.swift in Sources */,
+				624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */,
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,
+				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,
+				624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */,
 				621EFE172BE42942004F44B5 /* RegisterView.swift in Sources */,
 				621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */,
 				621EFE112BE4248F004F44B5 /* NavigationScreens.swift in Sources */,
+				624CDFF52BE56C8800ACEED2 /* LanguageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
