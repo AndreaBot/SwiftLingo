@@ -12,14 +12,16 @@ struct PasswordTextField: View {
     @Binding var password: String
     @State private var showingPassword = false
     
+    let prompt: String
+    
     var body: some View {
         HStack {
             ZStack {
                 if !showingPassword {
-                    SecureField("Password", text: $password, prompt: Text("Type your password here"))
+                    SecureField("Password", text: $password, prompt: Text(prompt))
                         .padding()
                 } else {
-                    TextField("Password", text: $password, prompt: Text("Type your password here"))
+                    TextField("Password", text: $password, prompt: Text(prompt))
                         .padding()
                 }
             }
@@ -37,5 +39,5 @@ struct PasswordTextField: View {
 }
 
 #Preview {
-    PasswordTextField(password: .constant("password"))
+    PasswordTextField(password: .constant("password"), prompt: "Type your password here")
 }

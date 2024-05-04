@@ -29,7 +29,10 @@ struct LoginView: View {
                 Spacer()
                 
                 TextField("Email", text: $email, prompt: Text("Enter your email"))
-                PasswordTextField(password: $password)
+                    .padding()
+                    .background(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                PasswordTextField(password: $password, prompt: "Type your password here")
                 
                 Spacer()
                 
