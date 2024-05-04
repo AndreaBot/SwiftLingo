@@ -34,7 +34,7 @@ struct SplashScreenView: View {
                         .navigationBarBackButtonHidden(true)
                 } else if screen == .mainAppView {
                     MainAppView(path: $path)
-                        .navigationBarBackButtonHidden(true)
+                        .navigationBarBackButtonHidden(Auth.auth().currentUser != nil ? true : false)
                 } else if screen == .registerView {
                     RegisterView(path: $path)
                 } else if screen == .loginView {

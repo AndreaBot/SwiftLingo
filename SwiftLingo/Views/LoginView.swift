@@ -29,7 +29,7 @@ struct LoginView: View {
                 Spacer()
                 
                 TextField("Email", text: $email, prompt: Text("Enter your email"))
-                TextField("Password", text: $password, prompt: Text("Enter your password"))
+                PasswordTextField(password: $password)
                 
                 Spacer()
                 

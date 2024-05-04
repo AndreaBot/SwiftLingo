@@ -29,6 +29,7 @@ struct MainAppView: View {
                 }
             }
         }
+        
     }
     
     func logoutUser() {
