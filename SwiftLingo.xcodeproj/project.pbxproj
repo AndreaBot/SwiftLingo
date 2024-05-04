@@ -24,6 +24,7 @@
 		624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */; };
 		624CDFFB2BE62CA400ACEED2 /* SpeechData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */; };
 		624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */; };
+		624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CE0022BE6359800ACEED2 /* PasswordRating.swift */; };
 		A41041900792BC5BF20EC9AE /* Pods_SwiftLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSViewModel.swift; sourceTree = "<group>"; };
 		624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechData.swift; sourceTree = "<group>"; };
 		624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		624CE0022BE6359800ACEED2 /* PasswordRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRating.swift; sourceTree = "<group>"; };
 		8DDA5ECDD366FA70222842A9 /* Pods-SwiftLingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.debug.xcconfig"; sourceTree = "<group>"; };
 		9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */,
+				624CE0022BE6359800ACEED2 /* PasswordRating.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */,
 				621EFE192BE42951004F44B5 /* LoginView.swift in Sources */,
 				621EFE152BE425B8004F44B5 /* MainAppView.swift in Sources */,
+				624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */,
 				624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */,
 				624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */,
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,

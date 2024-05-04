@@ -29,7 +29,10 @@ struct RegisterView: View {
                 Spacer()
                 
                 TextField("Email", text: $email, prompt: Text("Enter your email"))
-                PasswordTextField(password: $password)
+                VStack(alignment: .leading) {
+                    PasswordTextField(password: $password)
+                    PasswordRating(password: $password)
+                }
                 
                 Spacer()
                 
