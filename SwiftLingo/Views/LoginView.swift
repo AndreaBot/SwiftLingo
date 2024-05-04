@@ -17,32 +17,39 @@ struct LoginView: View {
     @State private var password = ""
     
     var body: some View {
-        ZStack {
-            Color.blue
-                .ignoresSafeArea()
+        VStack {
+            Spacer()
+            Image(systemName: "swift")
+                .font(.largeTitle)
             
-            VStack {
-                Spacer()
-                Image(systemName: "swift")
-                    .font(.largeTitle)
-                
-                Spacer()
-                
-                TextField("Email", text: $email, prompt: Text("Enter your email"))
+            Spacer()
+            
+            VStack(spacing: 30) {
+                TextField("Email", text: $email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
                     .padding()
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
-                PasswordTextField(password: $password, prompt: "Type your password here")
-                
-                Spacer()
-                
-                Button("Login") {
-                    loginUser()
-                }
-                .foregroundStyle(.white)
-                .disabled(email.isEmpty || password.isEmpty)
+                PasswordTextField(password: $password, prompt: "Enter your password")
             }
+            .padding()
+            .background(.thickMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+            Spacer()
+            
+            Button {
+                loginUser()
+            } label: {
+                Text("Login")
+                    .containerRelativeFrame(.horizontal) { size, axis in
+                        size * 0.85
+                    }
+                    .padding(.vertical, 5)
+            }
+            .buttonStyle(.borderedProminent)
+            .foregroundStyle(.background)
         }
+        .padding()
     }
     
     func loginUser() {

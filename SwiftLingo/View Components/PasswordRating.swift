@@ -56,6 +56,7 @@ struct PasswordRating: View {
             }
         }
         .font(.caption)
+        .foregroundStyle(.secondary)
     }
     
     

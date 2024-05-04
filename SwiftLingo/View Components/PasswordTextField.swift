@@ -18,10 +18,10 @@ struct PasswordTextField: View {
         HStack {
             ZStack {
                 if !showingPassword {
-                    SecureField("Password", text: $password, prompt: Text(prompt))
+                    SecureField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
                 } else {
-                    TextField("Password", text: $password, prompt: Text(prompt))
+                    TextField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
                 }
             }

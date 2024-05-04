@@ -21,46 +21,52 @@ struct RegisterView: View {
     @State private var alertMessage = ""
     
     var body: some View {
-        ZStack {
-            Color.blue
-                .ignoresSafeArea()
+        VStack {
+            Spacer()
+            Image(systemName: "swift")
+                .font(.largeTitle)
             
-            VStack {
-                Spacer()
-                Image(systemName: "swift")
-                    .font(.largeTitle)
-                
-                Spacer()
-                
-                TextField("Email", text: $email, prompt: Text("Enter your email"))
+            Spacer()
+            
+            VStack(spacing: 30) {
+                TextField("Email", text: $email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
                     .padding()
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack(alignment: .leading) {
-                    PasswordTextField(password: $password, prompt: "Type your password here")
-                    PasswordRating(password: $password)
+                    PasswordTextField(password: $password, prompt: "Enter your password")
+                    if !password.isEmpty {
+                        PasswordRating(password: $password)
+                    }
                 }
                 PasswordTextField(password: $passwordConfirmation, prompt: "Confirm your password")
-                
-                Spacer()
-                
-                Button("Register") {
-                    registerUser()
-                }
-                .foregroundStyle(.white)
-                //.disabled(email.isEmpty || password.isEmpty)
             }
-        }
-        .alert("Error", isPresented: $showingAlert) {
+            .padding()
+            .background(.thickMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
             
-        } message: {
+            Spacer()
+            
+            Button {
+                registerUser()
+            } label: {
+                Text("Register")
+                    .containerRelativeFrame(.horizontal) { size, axis in
+                        size * 0.85
+                    }
+                    .padding(.vertical, 5)
+            }
+            .buttonStyle(.borderedProminent)
+            .foregroundStyle(.background)
+        }
+        .padding()
+        .alert("Error", isPresented: $showingAlert) {} message: {
             Text(alertMessage)
         }
-
+        
     }
     
     func registerUser() {
-        
         guard email != "", password != "", passwordConfirmation != "" else {
             alertMessage = "One or more fields have not been filled in"
             showingAlert = true
