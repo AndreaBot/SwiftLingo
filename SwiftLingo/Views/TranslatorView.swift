@@ -10,6 +10,7 @@ import SwiftUI
 struct TranslatorView: View {
     
     @State private var viewModel = TranslatorViewModel()
+    @State private var ttsViewModel = TTSViewModel()
     
     var body: some View {
         VStack {
@@ -51,7 +52,21 @@ struct TranslatorView: View {
             .scrollContentBackground(.hidden)
             
             VStack(alignment: .leading) {
-                Text("Translation")
+                HStack {
+                    Text("Translation")
+                    Spacer()
+                    Button {
+                        Task {
+                            await ttsViewModel.generateVoice(text: viewModel.translation,
+                                                             languageCode: viewModel.targetLanguage.ttsCode,
+                                                             name: viewModel.targetLanguage.ttsVoice,
+                                                             ssmlGender: viewModel.targetLanguage.ttsGender)
+                        }
+                    } label: {
+                        Image(systemName: "speaker.wave.2.fill")
+                    }
+                    .disabled(viewModel.translation == "")
+                }
                 TextEditor(text: $viewModel.translation)
                 
             }
