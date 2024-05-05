@@ -11,10 +11,18 @@ struct LoginOptionsView: View {
     @Binding var path: [NavigationScreens]
     
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
             Spacer()
-            Image(systemName: "swift")
-                .font(.largeTitle)
+            SwiftLingoView()
+//            Image(.swiftLingoLogo)
+//                .resizable()
+//                .scaledToFit()
+//                .containerRelativeFrame([.horizontal]) { size, axis in
+//                    size * 0.5
+//                }
+//            Text("SwiftLingo")
+//                .font(.largeTitle).fontWeight(.heavy)
+//                .fontDesign(.rounded)
             
             Spacer()
             
@@ -23,6 +31,7 @@ struct LoginOptionsView: View {
                     path.append(.registerView)
                 } label: {
                     Text("Register")
+                        .font(.headline)
                         .containerRelativeFrame(.horizontal) { size, axis in
                             size * 0.85
                         }
@@ -35,6 +44,7 @@ struct LoginOptionsView: View {
                     path.append(.loginView)
                 } label: {
                     Text("Login")
+                        .font(.headline)
                         .containerRelativeFrame(.horizontal) { size, axis in
                             size * 0.84
                         }
@@ -52,13 +62,12 @@ struct LoginOptionsView: View {
                     path.append(.mainAppView)
                 } label: {
                     Text("Continue as a guest")
+                        .font(.headline)
                         .padding(.bottom)
                     
                 }
                 .buttonStyle(.borderless)
             }
-            
-            
         }
     }
 }

@@ -19,9 +19,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: "swift")
-                .font(.largeTitle)
-            
+            SwiftLingoView()
             Spacer()
             
             VStack(spacing: 30) {
@@ -41,6 +39,7 @@ struct LoginView: View {
                 loginUser()
             } label: {
                 Text("Login")
+                    .font(.headline)
                     .containerRelativeFrame(.horizontal) { size, axis in
                         size * 0.85
                     }

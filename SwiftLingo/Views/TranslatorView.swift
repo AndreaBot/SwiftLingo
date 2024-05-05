@@ -35,7 +35,7 @@ struct TranslatorView: View {
                         }
                     }
                     Section {
-                        Button("TRANSLATE") {
+                        Button("Translate") {
                             Task {
                                 await viewModel.getTranslation(text: viewModel.textToTranslate,
                                                                source: viewModel.sourceLanguage.sourceCode,
@@ -43,8 +43,6 @@ struct TranslatorView: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
-                        .frame(maxWidth: .infinity)
-                        
                     }
                 }
             }

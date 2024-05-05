@@ -23,9 +23,7 @@ struct RegisterView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: "swift")
-                .font(.largeTitle)
-            
+            SwiftLingoView()
             Spacer()
             
             VStack(spacing: 30) {
@@ -51,6 +49,7 @@ struct RegisterView: View {
                 registerUser()
             } label: {
                 Text("Register")
+                    .font(.headline)
                     .containerRelativeFrame(.horizontal) { size, axis in
                         size * 0.85
                     }

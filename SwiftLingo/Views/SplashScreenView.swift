@@ -16,31 +16,25 @@ struct SplashScreenView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
-            ZStack {
-                Color.blue
-                    .ignoresSafeArea()
-                
-                Image(systemName: "swift")
-                    .font(.largeTitle)
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    checkCurrentUser()
+            SwiftLingoView()
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        checkCurrentUser()
+                    }
                 }
-            }
-            .navigationDestination(for: NavigationScreens.self) { screen in
-                if screen == .loginOptions {
-                    LoginOptionsView(path: $path)
-                        .navigationBarBackButtonHidden(true)
-                } else if screen == .mainAppView {
-                    MainAppView(path: $path)
-                        .navigationBarBackButtonHidden(Auth.auth().currentUser != nil ? true : false)
-                } else if screen == .registerView {
-                    RegisterView(path: $path)
-                } else if screen == .loginView {
-                    LoginView(path: $path)
+                .navigationDestination(for: NavigationScreens.self) { screen in
+                    if screen == .loginOptions {
+                        LoginOptionsView(path: $path)
+                            .navigationBarBackButtonHidden(true)
+                    } else if screen == .mainAppView {
+                        MainAppView(path: $path)
+                            .navigationBarBackButtonHidden(Auth.auth().currentUser != nil ? true : false)
+                    } else if screen == .registerView {
+                        RegisterView(path: $path)
+                    } else if screen == .loginView {
+                        LoginView(path: $path)
+                    }
                 }
-            }
         }
     }
     
