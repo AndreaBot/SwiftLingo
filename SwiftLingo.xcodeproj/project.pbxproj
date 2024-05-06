@@ -31,6 +31,7 @@
 		62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */; };
 		62EDE4DC2BE8DB65000BE168 /* SavedTranslationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DB2BE8DB65000BE168 /* SavedTranslationsViewModel.swift */; };
 		62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DD2BE8E175000BE168 /* DetailView.swift */; };
+		62EDE4E02BE96145000BE168 /* CustomButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */; };
 		A41041900792BC5BF20EC9AE /* Pods_SwiftLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		62EDE4DB2BE8DB65000BE168 /* SavedTranslationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationsViewModel.swift; sourceTree = "<group>"; };
 		62EDE4DD2BE8E175000BE168 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonModifier.swift; sourceTree = "<group>"; };
 		8DDA5ECDD366FA70222842A9 /* Pods-SwiftLingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.debug.xcconfig"; sourceTree = "<group>"; };
 		9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				624CDFFE2BE6319900ACEED2 /* Views */,
 				624CE0012BE633B000ACEED2 /* View Components */,
 				624CDFFD2BE6318B00ACEED2 /* View Models */,
+				62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */,
 				621EFE042BE41DB6004F44B5 /* Assets.xcassets */,
 				621EFE0E2BE41EB5004F44B5 /* GoogleService-Info.plist */,
 				621EFE062BE41DB6004F44B5 /* Preview Content */,
@@ -315,6 +318,7 @@
 				624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */,
 				62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */,
 				621EFE172BE42942004F44B5 /* RegisterView.swift in Sources */,
+				62EDE4E02BE96145000BE168 /* CustomButtonModifier.swift in Sources */,
 				62EDE4D62BE8CA90000BE168 /* SavedTranslationsView.swift in Sources */,
 				621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */,
 				621EFE112BE4248F004F44B5 /* NavigationScreens.swift in Sources */,

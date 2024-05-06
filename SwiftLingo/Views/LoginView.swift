@@ -39,14 +39,9 @@ struct LoginView: View {
                 loginUser()
             } label: {
                 Text("Login")
-                    .font(.headline)
-                    .containerRelativeFrame(.horizontal) { size, axis in
-                        size * 0.85
-                    }
-                    .padding(.vertical, 5)
             }
-            .buttonStyle(.borderedProminent)
             .foregroundStyle(.background)
+            .customButton(fillColor: .blue, borderWidth: 0)
         }
         .padding()
     }

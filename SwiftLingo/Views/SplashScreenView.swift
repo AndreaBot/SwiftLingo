@@ -11,7 +11,6 @@ import SwiftUI
 
 struct SplashScreenView: View {
     
-    @State private var showingSplashScreen = true
     @State private var path = [NavigationScreens]()
     
     var body: some View {

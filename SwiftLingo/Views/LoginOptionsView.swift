@@ -11,18 +11,9 @@ struct LoginOptionsView: View {
     @Binding var path: [NavigationScreens]
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack {
             Spacer()
             SwiftLingoView()
-//            Image(.swiftLingoLogo)
-//                .resizable()
-//                .scaledToFit()
-//                .containerRelativeFrame([.horizontal]) { size, axis in
-//                    size * 0.5
-//                }
-//            Text("SwiftLingo")
-//                .font(.largeTitle).fontWeight(.heavy)
-//                .fontDesign(.rounded)
             
             Spacer()
             
@@ -31,32 +22,17 @@ struct LoginOptionsView: View {
                     path.append(.registerView)
                 } label: {
                     Text("Register")
-                        .font(.headline)
-                        .containerRelativeFrame(.horizontal) { size, axis in
-                            size * 0.85
-                        }
-                        .padding(.vertical, 5)
                 }
-                .buttonStyle(.borderedProminent)
                 .foregroundStyle(.background)
+                .customButton(fillColor: .blue, borderWidth: 0)
                 
                 Button {
                     path.append(.loginView)
                 } label: {
                     Text("Login")
-                        .font(.headline)
-                        .containerRelativeFrame(.horizontal) { size, axis in
-                            size * 0.84
-                        }
-                        .padding(12)
-                        .foregroundColor(.blue)
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 8,
-                                style: .continuous
-                            )
-                            .stroke(.blue, lineWidth: 3)
-                        )}
+                }
+                .foregroundStyle(.blue)
+                .customButton(fillColor: .clear, borderWidth: 3)
                 
                 Button {
                     path.append(.mainAppView)
@@ -66,7 +42,6 @@ struct LoginOptionsView: View {
                         .padding(.bottom)
                     
                 }
-                .buttonStyle(.borderless)
             }
         }
     }
