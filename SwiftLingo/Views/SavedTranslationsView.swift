@@ -31,7 +31,9 @@ struct SavedTranslationsView: View {
             .onAppear {
                 viewModel.fetchTranslations()
             }
-            .sheet(item: $selectedTranslation) { translation in
+            .sheet(item: $selectedTranslation, onDismiss: {
+                viewModel.fetchTranslations()
+            }) { translation in
                 DetailView(savedTranslation: translation)
                     .presentationDetents([.medium])
             }

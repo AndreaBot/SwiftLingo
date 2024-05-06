@@ -55,5 +55,15 @@ final class SavedTranslationsViewModel {
                 }
         }
     }
+    
+    func deleteTranslation(documentName: String) async {
+        if let currentUser = currentUser {
+            do {
+                try await database.collection(currentUser.uid).document(documentName).delete()
+                print("Document successfully removed!")
+            } catch {
+                print("Error removing document: \(error)")
+            }
+        }
+    }
 }
-

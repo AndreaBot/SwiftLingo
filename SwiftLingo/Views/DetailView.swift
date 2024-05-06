@@ -9,6 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var viewModel = SavedTranslationsViewModel()
     @State private var ttsViewModel = TTSViewModel()
     let savedTranslation: TranslationModel
     
@@ -41,7 +44,10 @@ struct DetailView: View {
                 }
                 Spacer()
                 Button {
-                    print("delete")
+                    Task {
+                     await viewModel.deleteTranslation(documentName: String(savedTranslation.id))
+                        dismiss()
+                    }
                 } label: {
                     Image(systemName: "trash.fill")
                 }

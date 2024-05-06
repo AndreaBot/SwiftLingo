@@ -113,12 +113,13 @@ final class TranslatorViewModel {
     
     func saveTranslation() {
         if let userId = userId {
-            database.collection(userId).addDocument(data: [
+            let date = Date().timeIntervalSince1970
+            database.collection(userId).document(String(date)).setData([
                 "sourceLanguage": sourceLanguage.id,
                 "textToTranslate": textToTranslate,
                 "targetLanguage" : targetLanguage.id,
                 "translation": translation,
-                "date": Date().timeIntervalSince1970
+                "date": date
             ]) { error in
                 if let e = error {
                     print("there was an error adding data to firestore, \(e)")
@@ -127,4 +128,3 @@ final class TranslatorViewModel {
         }
     }
 }
-
