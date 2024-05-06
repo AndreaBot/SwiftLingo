@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     
+    @State private var ttsViewModel = TTSViewModel()
     let savedTranslation: TranslationModel
     
     var body: some View {
@@ -29,7 +30,12 @@ struct DetailView: View {
             
             HStack {
                 Button {
-                    print("listen")
+                    Task {
+                        await ttsViewModel.generateVoice(text: savedTranslation.translation,
+                                                         languageCode: savedTranslation.targetLanguage.ttsCode,
+                                                         name: savedTranslation.targetLanguage.ttsVoice,
+                                                         ssmlGender: savedTranslation.targetLanguage.ttsGender)
+                    }
                 } label: {
                     Image(systemName: "speaker.wave.2.fill")
                 }
