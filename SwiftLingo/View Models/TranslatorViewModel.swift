@@ -5,6 +5,8 @@
 //  Created by Andrea Bottino on 03/05/2024.
 //
 
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 
 
@@ -101,6 +103,27 @@ final class TranslatorViewModel {
         } catch {
             print(error)
             return nil
+        }
+    }
+    
+    //MARK: - Firebase Firestore
+    
+    let database = Firestore.firestore()
+    let userId = Auth.auth().currentUser?.uid
+    
+    func saveTranslation() {
+        if let userId = userId {
+            database.collection(userId).addDocument(data: [
+                "sourceLanguage": sourceLanguage.id,
+                "textToTranslate": textToTranslate,
+                "targetLanguage" : targetLanguage.id,
+                "translation": translation,
+                "date": Date().timeIntervalSince1970
+            ]) { error in
+                if let e = error {
+                    print("there was an error adding data to firestore, \(e)")
+                }
+            }
         }
     }
 }

@@ -12,6 +12,9 @@ struct TranslatorView: View {
     @State private var viewModel = TranslatorViewModel()
     @State private var ttsViewModel = TTSViewModel()
     
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -52,7 +55,22 @@ struct TranslatorView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Translation")
+                    
                     Spacer()
+                    
+                    Button {
+                        guard viewModel.userId != nil  else {
+                            alertMessage = "You need to be logged in as a user to save tranlsations."
+                            showingAlert = true
+                            return
+                            }
+                        viewModel.saveTranslation()
+                    } label: {
+                        Image(systemName: "heart")
+                            .tint(.pink)
+                    }
+                    .disabled(viewModel.translation.isEmpty)
+                    
                     Button {
                         Task {
                             await ttsViewModel.generateVoice(text: viewModel.translation,
@@ -63,11 +81,13 @@ struct TranslatorView: View {
                     } label: {
                         Image(systemName: "speaker.wave.2.fill")
                     }
-                    .disabled(viewModel.translation == "")
+                    .disabled(viewModel.translation.isEmpty)
                 }
                 TextEditor(text: $viewModel.translation)
-                
             }
+        }
+        .alert("Error", isPresented: $showingAlert) {
+            
         }
     }
 }
