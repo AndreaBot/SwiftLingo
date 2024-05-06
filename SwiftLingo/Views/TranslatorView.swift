@@ -25,14 +25,14 @@ struct TranslatorView: View {
             Form {
                 VStack(spacing: 20) {
                     Picker("Select source language", selection: $viewModel.sourceLanguage) {
-                        ForEach(viewModel.allLanguages.sorted()) {
+                        ForEach(TranslatorViewModel.allLanguages.sorted()) {
                             Text($0.id)
                                 .tag($0)
                         }
                     }
                     .pickerStyle(.automatic)
                     Picker("Select target language", selection: $viewModel.targetLanguage) {
-                        ForEach(viewModel.allLanguages.sorted()) {
+                        ForEach(TranslatorViewModel.allLanguages.sorted()) {
                             Text($0.id)
                                 .tag($0)
                         }

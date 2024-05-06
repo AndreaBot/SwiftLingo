@@ -13,7 +13,7 @@ import SwiftUI
 @Observable
 final class TranslatorViewModel {
     
-    let allLanguages: [LanguageModel] = [
+    static let allLanguages: [LanguageModel] = [
         LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"),
         LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"),
         LanguageModel(id: "Danish", flag: "🇩🇰", sourceCode: "DA", targetCode: "DA", ttsCode: "da-DK", ttsGender: "FEMALE", ttsVoice: "da-DK-Standard-E"),

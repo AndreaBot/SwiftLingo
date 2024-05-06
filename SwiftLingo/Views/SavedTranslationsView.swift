@@ -5,25 +5,25 @@
 //  Created by Andrea Bottino on 06/05/2024.
 //
 
-import FirebaseAuth
 import SwiftUI
 
 struct SavedTranslationsView: View {
     
+    let viewModel = SavedTranslationsViewModel()
     
-    let currentUser = Auth.auth().currentUser
+   // let currentUser = Auth.auth().currentUser
     
-    // var savedTranslations: [TranslationModel] = []
+   //  var savedTranslations: [TranslationModel] = []
     
-    let savedTranslations = [
-        TranslationModel(id: 0.1, sourceLanguage:   LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"), targetLanguage: LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"), textToTranslate: "Test 1", translation: "1 Test"),
-        TranslationModel(id: 0.2, sourceLanguage:  LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR", ttsGender: "FEMALE", ttsVoice: "el-GR-Standard-A"), targetLanguage:  LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES", ttsGender: "FEMALE", ttsVoice: "es-ES-Standard-C"), textToTranslate: "Test 2", translation: "2 Test")
-    ]
+//    let savedTranslations = [
+//        TranslationModel(id: 0.1, sourceLanguage:   LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"), targetLanguage: LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"), textToTranslate: "Test 1", translation: "1 Test"),
+//        TranslationModel(id: 0.2, sourceLanguage:  LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR", ttsGender: "FEMALE", ttsVoice: "el-GR-Standard-A"), targetLanguage:  LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES", ttsGender: "FEMALE", ttsVoice: "es-ES-Standard-C"), textToTranslate: "Test 2", translation: "2 Test")
+   // ]
     
     var body: some View {
-        if let currentUser = currentUser {
+        if let currentUser = viewModel.currentUser {
             List {
-                ForEach(savedTranslations) { translation in
+                ForEach(viewModel.savedTranslations) { translation in
                     SavedTranslationComponent(savedTranslation: translation)
                 }
                 .listRowSeparator(.hidden)
@@ -32,6 +32,9 @@ struct SavedTranslationsView: View {
             .listStyle(.plain)
             .environment(\.defaultMinListRowHeight, 0)
             .listRowSpacing(5)
+            .onAppear {
+                viewModel.fetchTranslations()
+            }
             
         } else {
             ContentUnavailableView("Oops...", systemImage: "multiply", description: Text("You need to be logged in as a user to save and access your translations"))
