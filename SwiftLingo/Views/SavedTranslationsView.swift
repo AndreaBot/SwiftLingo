@@ -9,22 +9,18 @@ import SwiftUI
 
 struct SavedTranslationsView: View {
     
-    let viewModel = SavedTranslationsViewModel()
-    
-   // let currentUser = Auth.auth().currentUser
-    
-   //  var savedTranslations: [TranslationModel] = []
-    
-//    let savedTranslations = [
-//        TranslationModel(id: 0.1, sourceLanguage:   LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"), targetLanguage: LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"), textToTranslate: "Test 1", translation: "1 Test"),
-//        TranslationModel(id: 0.2, sourceLanguage:  LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR", ttsGender: "FEMALE", ttsVoice: "el-GR-Standard-A"), targetLanguage:  LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES", ttsGender: "FEMALE", ttsVoice: "es-ES-Standard-C"), textToTranslate: "Test 2", translation: "2 Test")
-   // ]
+    @State private var viewModel = SavedTranslationsViewModel()
+    @State private var selectedTranslation: TranslationModel? = nil
     
     var body: some View {
-        if let currentUser = viewModel.currentUser {
+        if let _ = viewModel.currentUser {
             List {
                 ForEach(viewModel.savedTranslations) { translation in
-                    SavedTranslationComponent(savedTranslation: translation)
+                    Button {
+                        selectedTranslation = translation
+                    } label: {
+                        SavedTranslationComponent(savedTranslation: translation)
+                    }
                 }
                 .listRowSeparator(.hidden)
                 .listRowInsets(.init(top: 2.5, leading: 5, bottom: 2.5, trailing: 5))
@@ -35,6 +31,10 @@ struct SavedTranslationsView: View {
             .onAppear {
                 viewModel.fetchTranslations()
             }
+            .sheet(item: $selectedTranslation) { translation in
+                DetailView(savedTranslation: translation)
+                    .presentationDetents([.medium])
+            }
             
         } else {
             ContentUnavailableView("Oops...", systemImage: "multiply", description: Text("You need to be logged in as a user to save and access your translations"))
@@ -43,9 +43,5 @@ struct SavedTranslationsView: View {
 }
 
 #Preview {
-//    let saved = [
-//        TranslationModel(id: 0.1, sourceLanguage:   LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"), targetLanguage: LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"), textToTranslate: "Test 1", translation: "1 Test"),
-//        TranslationModel(id: 0.2, sourceLanguage:  LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR", ttsGender: "FEMALE", ttsVoice: "el-GR-Standard-A"), targetLanguage:  LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES", ttsGender: "FEMALE", ttsVoice: "es-ES-Standard-C"), textToTranslate: "Test 2", translation: "2 Test")
-//    ]
-     SavedTranslationsView()
+    SavedTranslationsView()
 }
