@@ -22,8 +22,17 @@ struct SavedTranslationsView: View {
                         SavedTranslationComponent(savedTranslation: translation)
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    Task {
+                        for index in indexSet {
+                            await viewModel.deleteTranslation(documentName: String(viewModel.savedTranslations[index].id))
+                            viewModel.fetchTranslations()
+                        }
+                    }
+                })
                 .listRowSeparator(.hidden)
                 .listRowInsets(.init(top: 2.5, leading: 5, bottom: 2.5, trailing: 5))
+                
             }
             .listStyle(.plain)
             .environment(\.defaultMinListRowHeight, 0)
@@ -41,7 +50,9 @@ struct SavedTranslationsView: View {
         } else {
             ContentUnavailableView("Oops...", systemImage: "multiply", description: Text("You need to be logged in as a user to save and access your translations"))
         }
+           
     }
+        
 }
 
 #Preview {
