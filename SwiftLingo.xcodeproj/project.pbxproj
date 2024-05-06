@@ -29,7 +29,7 @@
 		62EDE4D62BE8CA90000BE168 /* SavedTranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */; };
 		62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */; };
 		62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */; };
-		62EDE4DC2BE8DB65000BE168 /* SavedTranslationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DB2BE8DB65000BE168 /* SavedTranslationsViewModel.swift */; };
+		62EDE4DC2BE8DB65000BE168 /* FirestoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DB2BE8DB65000BE168 /* FirestoreViewModel.swift */; };
 		62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DD2BE8E175000BE168 /* DetailView.swift */; };
 		62EDE4E02BE96145000BE168 /* CustomButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */; };
 		62EDE4E22BE96CF0000BE168 /* FirebaseAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */; };
@@ -61,7 +61,7 @@
 		62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationsView.swift; sourceTree = "<group>"; };
 		62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationComponent.swift; sourceTree = "<group>"; };
 		62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
-		62EDE4DB2BE8DB65000BE168 /* SavedTranslationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationsViewModel.swift; sourceTree = "<group>"; };
+		62EDE4DB2BE8DB65000BE168 /* FirestoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreViewModel.swift; sourceTree = "<group>"; };
 		62EDE4DD2BE8E175000BE168 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonModifier.swift; sourceTree = "<group>"; };
 		62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthViewModel.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			children = (
 				62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */,
 				624CDFF22BE56C5900ACEED2 /* TranslatorViewModel.swift */,
-				62EDE4DB2BE8DB65000BE168 /* SavedTranslationsViewModel.swift */,
+				62EDE4DB2BE8DB65000BE168 /* FirestoreViewModel.swift */,
 				624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */,
 			);
 			path = "View Models";
@@ -318,7 +318,7 @@
 				62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */,
 				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,
 				62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */,
-				62EDE4DC2BE8DB65000BE168 /* SavedTranslationsViewModel.swift in Sources */,
+				62EDE4DC2BE8DB65000BE168 /* FirestoreViewModel.swift in Sources */,
 				624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */,
 				62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */,
 				621EFE172BE42942004F44B5 /* RegisterView.swift in Sources */,

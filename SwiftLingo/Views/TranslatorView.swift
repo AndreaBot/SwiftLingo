@@ -9,29 +9,27 @@ import SwiftUI
 
 struct TranslatorView: View {
     
-    @State private var viewModel = TranslatorViewModel()
+    @Binding var firestoreViewModel: FirestoreViewModel
+    @State private var translatorViewModel = TranslatorViewModel()
     @State private var ttsViewModel = TTSViewModel()
-    
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
     
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                 Text("Translate")
-                TextEditor(text: $viewModel.textToTranslate)
+                TextEditor(text: $translatorViewModel.textToTranslate)
                 
             }
             Form {
                 VStack(spacing: 20) {
-                    Picker("Select source language", selection: $viewModel.sourceLanguage) {
+                    Picker("Select source language", selection: $translatorViewModel.sourceLanguage) {
                         ForEach(TranslatorViewModel.allLanguages.sorted()) {
                             Text($0.id)
                                 .tag($0)
                         }
                     }
                     .pickerStyle(.automatic)
-                    Picker("Select target language", selection: $viewModel.targetLanguage) {
+                    Picker("Select target language", selection: $translatorViewModel.targetLanguage) {
                         ForEach(TranslatorViewModel.allLanguages.sorted()) {
                             Text($0.id)
                                 .tag($0)
@@ -40,9 +38,9 @@ struct TranslatorView: View {
                     Section {
                         Button("Translate") {
                             Task {
-                                await viewModel.getTranslation(text: viewModel.textToTranslate,
-                                                               source: viewModel.sourceLanguage.sourceCode,
-                                                               target: viewModel.targetLanguage.targetCode)
+                                await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
+                                                                         source: translatorViewModel.sourceLanguage.sourceCode,
+                                                                         target: translatorViewModel.targetLanguage.targetCode)
                             }
                         }
                         .buttonStyle(.borderedProminent)
@@ -59,40 +57,35 @@ struct TranslatorView: View {
                     Spacer()
                     
                     Button {
-                        guard viewModel.userId != nil  else {
-                            alertMessage = "You need to be logged in as a user to save tranlsations."
-                            showingAlert = true
-                            return
-                            }
-                        viewModel.saveTranslation()
+                        firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
                     } label: {
                         Image(systemName: "heart")
                             .tint(.pink)
                     }
-                    .disabled(viewModel.translation.isEmpty)
+                    .disabled(translatorViewModel.translation.isEmpty)
                     
                     Button {
                         Task {
-                            await ttsViewModel.generateVoice(text: viewModel.translation,
-                                                             languageCode: viewModel.targetLanguage.ttsCode,
-                                                             name: viewModel.targetLanguage.ttsVoice,
-                                                             ssmlGender: viewModel.targetLanguage.ttsGender)
+                            await ttsViewModel.generateVoice(text: translatorViewModel.translation,
+                                                             languageCode: translatorViewModel.targetLanguage.ttsCode,
+                                                             name: translatorViewModel.targetLanguage.ttsVoice,
+                                                             ssmlGender: translatorViewModel.targetLanguage.ttsGender)
                         }
                     } label: {
                         Image(systemName: "speaker.wave.2.fill")
                     }
-                    .disabled(viewModel.translation.isEmpty)
+                    .disabled(translatorViewModel.translation.isEmpty)
                 }
-                TextEditor(text: $viewModel.translation)
+                TextEditor(text: $translatorViewModel.translation)
             }
         }
-        .alert("Error", isPresented: $showingAlert) {
+        .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
         } message: {
-            Text(alertMessage)
+            Text(firestoreViewModel.alertMessage)
         }
     }
 }
 
-#Preview {
-    TranslatorView()
-}
+//#Preview {
+//    TranslatorView()
+//}

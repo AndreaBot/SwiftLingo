@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SavedTranslationsView: View {
     
-    @State private var viewModel = SavedTranslationsViewModel()
+    @Binding var firestoreViewModel: FirestoreViewModel
     @State private var selectedTranslation: TranslationModel? = nil
     
     var body: some View {
-        if let _ = viewModel.currentUser {
+        if let _ = firestoreViewModel.currentUser {
             List {
-                ForEach(viewModel.savedTranslations) { translation in
+                ForEach(firestoreViewModel.savedTranslations) { translation in
                     Button {
                         selectedTranslation = translation
                     } label: {
@@ -25,8 +25,8 @@ struct SavedTranslationsView: View {
                 .onDelete(perform: { indexSet in
                     Task {
                         for index in indexSet {
-                            await viewModel.deleteTranslation(documentName: String(viewModel.savedTranslations[index].id))
-                            viewModel.fetchTranslations()
+                            await firestoreViewModel.deleteTranslation(documentName: String(firestoreViewModel.savedTranslations[index].id))
+                            firestoreViewModel.fetchTranslations()
                         }
                     }
                 })
@@ -38,13 +38,17 @@ struct SavedTranslationsView: View {
             .environment(\.defaultMinListRowHeight, 0)
             .listRowSpacing(5)
             .onAppear {
-                viewModel.fetchTranslations()
+                firestoreViewModel.fetchTranslations()
             }
             .sheet(item: $selectedTranslation, onDismiss: {
-                viewModel.fetchTranslations()
+                firestoreViewModel.fetchTranslations()
             }) { translation in
                 DetailView(savedTranslation: translation)
                     .presentationDetents([.medium])
+            }
+            .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
+            } message: {
+                Text(firestoreViewModel.alertMessage)
             }
             
         } else {
@@ -55,6 +59,6 @@ struct SavedTranslationsView: View {
         
 }
 
-#Preview {
-    SavedTranslationsView()
-}
+//#Preview {
+//    SavedTranslationsView()
+//}

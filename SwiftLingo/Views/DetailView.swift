@@ -11,7 +11,7 @@ struct DetailView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var viewModel = SavedTranslationsViewModel()
+    @State private var viewModel = FirestoreViewModel()
     @State private var ttsViewModel = TTSViewModel()
     let savedTranslation: TranslationModel
     

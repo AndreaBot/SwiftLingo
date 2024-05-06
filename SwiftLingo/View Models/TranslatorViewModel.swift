@@ -108,23 +108,23 @@ final class TranslatorViewModel {
     
     //MARK: - Firebase Firestore
     
-    let database = Firestore.firestore()
-    let userId = Auth.auth().currentUser?.uid
+  //  let database = Firestore.firestore()
+  //  let userId = Auth.auth().currentUser?.uid
     
-    func saveTranslation() {
-        if let userId = userId {
-            let date = Date().timeIntervalSince1970
-            database.collection(userId).document(String(date)).setData([
-                "sourceLanguage": sourceLanguage.id,
-                "textToTranslate": textToTranslate,
-                "targetLanguage" : targetLanguage.id,
-                "translation": translation,
-                "date": date
-            ]) { error in
-                if let e = error {
-                    print("there was an error adding data to firestore, \(e)")
-                }
-            }
-        }
-    }
+//    func saveTranslation() {
+//        if let userId = userId {
+//            let date = Date().timeIntervalSince1970
+//            database.collection(userId).document(String(date)).setData([
+//                "sourceLanguage": sourceLanguage.id,
+//                "textToTranslate": textToTranslate,
+//                "targetLanguage" : targetLanguage.id,
+//                "translation": translation,
+//                "date": date
+//            ]) { error in
+//                if let e = error {
+//                    print("there was an error adding data to firestore, \(e)")
+//                }
+//            }
+//        }
+//    }
 }

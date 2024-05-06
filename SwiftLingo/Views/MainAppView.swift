@@ -12,15 +12,16 @@ import SwiftUI
 struct MainAppView: View {
 
     @Binding var viewModel: FirebaseAuthViewModel
+    @State private var firestoreViewModel = FirestoreViewModel()
     
     var body: some View {
         TabView {
-            TranslatorView()
+            TranslatorView(firestoreViewModel: $firestoreViewModel)
                 .tabItem {
                     Label("SwiftLingo", systemImage: "swift")
                 }
             
-            SavedTranslationsView()
+            SavedTranslationsView(firestoreViewModel: $firestoreViewModel)
                 .tabItem {
                     Label("Saved translations", systemImage: "heart")
                 }
