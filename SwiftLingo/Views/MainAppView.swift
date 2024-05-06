@@ -19,6 +19,11 @@ struct MainAppView: View {
                 .tabItem {
                     Label("SwiftLingo", systemImage: "swift")
                 }
+            
+            SavedTranslationsView()
+                .tabItem {
+                    Label("Saved translations", systemImage: "heart")
+                }
         }
         .toolbar {
             if Auth.auth().currentUser != nil {

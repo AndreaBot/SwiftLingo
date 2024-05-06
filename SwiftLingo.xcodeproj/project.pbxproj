@@ -26,6 +26,9 @@
 		624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */; };
 		624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CE0022BE6359800ACEED2 /* PasswordRating.swift */; };
 		62EDE4BA2BE776BF000BE168 /* SwiftLingoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */; };
+		62EDE4D62BE8CA90000BE168 /* SavedTranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */; };
+		62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */; };
+		62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */; };
 		A41041900792BC5BF20EC9AE /* Pods_SwiftLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		624CE0022BE6359800ACEED2 /* PasswordRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRating.swift; sourceTree = "<group>"; };
 		62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoView.swift; sourceTree = "<group>"; };
+		62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationsView.swift; sourceTree = "<group>"; };
+		62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationComponent.swift; sourceTree = "<group>"; };
+		62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		8DDA5ECDD366FA70222842A9 /* Pods-SwiftLingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.debug.xcconfig"; sourceTree = "<group>"; };
 		9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +130,7 @@
 				624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */,
 				624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */,
 				624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */,
+				62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +153,7 @@
 				621EFE182BE42951004F44B5 /* LoginView.swift */,
 				621EFE142BE425B8004F44B5 /* MainAppView.swift */,
 				624CDFF02BE5689200ACEED2 /* TranslatorView.swift */,
+				62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 				62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */,
 				624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */,
 				624CE0022BE6359800ACEED2 /* PasswordRating.swift */,
+				62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -294,8 +303,11 @@
 				624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */,
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,
 				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,
+				62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */,
 				624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */,
+				62EDE4DA2BE8CDEC000BE168 /* TranslationModel.swift in Sources */,
 				621EFE172BE42942004F44B5 /* RegisterView.swift in Sources */,
+				62EDE4D62BE8CA90000BE168 /* SavedTranslationsView.swift in Sources */,
 				621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */,
 				621EFE112BE4248F004F44B5 /* NavigationScreens.swift in Sources */,
 				624CDFF52BE56C8800ACEED2 /* LanguageModel.swift in Sources */,

@@ -87,7 +87,8 @@ struct TranslatorView: View {
             }
         }
         .alert("Error", isPresented: $showingAlert) {
-            
+        } message: {
+            Text(alertMessage)
         }
     }
 }
