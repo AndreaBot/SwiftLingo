@@ -11,37 +11,29 @@ import SwiftUI
 
 struct SplashScreenView: View {
     
-    @State private var path = [NavigationScreens]()
+    @State private var viewModel = FirebaseAuthViewModel()
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $viewModel.path) {
             SwiftLingoView()
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        checkCurrentUser()
+                        viewModel.checkCurrentUser()
                     }
                 }
                 .navigationDestination(for: NavigationScreens.self) { screen in
                     if screen == .loginOptions {
-                        LoginOptionsView(path: $path)
+                        LoginOptionsView(viewModel: $viewModel)
                             .navigationBarBackButtonHidden(true)
                     } else if screen == .mainAppView {
-                        MainAppView(path: $path)
+                        MainAppView(viewModel: $viewModel)
                             .navigationBarBackButtonHidden(Auth.auth().currentUser != nil ? true : false)
                     } else if screen == .registerView {
-                        RegisterView(path: $path)
+                            RegisterView(viewModel: $viewModel)
                     } else if screen == .loginView {
-                        LoginView(path: $path)
+                        LoginView(viewModel: $viewModel)
                     }
                 }
-        }
-    }
-    
-    func checkCurrentUser() {
-        if Auth.auth().currentUser == nil {
-            path.append(.loginOptions)
-        } else {
-            path.append(.mainAppView)
         }
     }
 }

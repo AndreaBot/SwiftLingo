@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct LoginOptionsView: View {
-    @Binding var path: [NavigationScreens]
+
+    @Binding var viewModel: FirebaseAuthViewModel
     
     var body: some View {
         VStack {
             Spacer()
+            
             SwiftLingoView()
             
             Spacer()
             
             VStack(spacing: 30) {
                 Button {
-                    path.append(.registerView)
+                    viewModel.path.append(.registerView)
                 } label: {
                     Text("Register")
                 }
@@ -27,7 +29,7 @@ struct LoginOptionsView: View {
                 .customButton(fillColor: .blue, borderWidth: 0)
                 
                 Button {
-                    path.append(.loginView)
+                    viewModel.path.append(.loginView)
                 } label: {
                     Text("Login")
                 }
@@ -35,7 +37,7 @@ struct LoginOptionsView: View {
                 .customButton(fillColor: .clear, borderWidth: 3)
                 
                 Button {
-                    path.append(.mainAppView)
+                    viewModel.path.append(.mainAppView)
                 } label: {
                     Text("Continue as a guest")
                         .font(.headline)
@@ -47,6 +49,6 @@ struct LoginOptionsView: View {
     }
 }
 
-#Preview {
-    LoginOptionsView(path: .constant([.loginOptions]))
-}
+//#Preview {
+//    LoginOptionsView(path: .constant([.loginOptions]))
+//}

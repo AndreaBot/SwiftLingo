@@ -11,11 +11,8 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var path: [NavigationScreens]
-    
-    @State private var email = ""
-    @State private var password = ""
-    
+    @Binding var viewModel: FirebaseAuthViewModel
+
     var body: some View {
         VStack {
             Spacer()
@@ -23,11 +20,11 @@ struct LoginView: View {
             Spacer()
             
             VStack(spacing: 30) {
-                TextField("Email", text: $email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
+                TextField("Email", text: $viewModel.email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
                     .padding()
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
-                PasswordTextField(password: $password, prompt: "Enter your password")
+                PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
             }
             .padding()
             .background(.thickMaterial)
@@ -36,7 +33,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                loginUser()
+                viewModel.loginUser()
             } label: {
                 Text("Login")
             }
@@ -44,19 +41,15 @@ struct LoginView: View {
             .customButton(fillColor: .blue, borderWidth: 0)
         }
         .padding()
-    }
-    
-    func loginUser() {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let e = error {
-                print(e)
-            } else {
-                path.append(.mainAppView)
-            }
+        .onAppear {
+            viewModel.resetFields()
+        }
+        .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
+            Text(viewModel.alertMessage)
         }
     }
 }
 
-#Preview {
-    LoginView(path: .constant([.loginOptions, .loginView]))
-}
+//#Preview {
+//    LoginView(path: .constant([.loginOptions, .loginView]))
+//}

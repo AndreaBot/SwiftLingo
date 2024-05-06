@@ -10,8 +10,8 @@ import FirebaseAuth
 import SwiftUI
 
 struct MainAppView: View {
-    
-    @Binding var path: [NavigationScreens]
+
+    @Binding var viewModel: FirebaseAuthViewModel
     
     var body: some View {
         TabView {
@@ -29,24 +29,17 @@ struct MainAppView: View {
             if Auth.auth().currentUser != nil {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Logout") {
-                        logoutUser()
+                        viewModel.logoutUser()
                     }
                 }
             }
         }
-        
-    }
-    
-    func logoutUser() {
-        do {
-            try Auth.auth().signOut()
-            path.removeAll()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
+            Text(viewModel.alertMessage)
         }
     }
 }
 
-#Preview {
-    MainAppView(path: .constant([.loginOptions, .mainAppView]))
-}
+//#Preview {
+//    MainAppView(path: .constant([.loginOptions, .mainAppView]))
+//}
