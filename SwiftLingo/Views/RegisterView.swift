@@ -24,8 +24,10 @@ struct RegisterView: View {
             VStack(spacing: 30) {
                 TextField("Email", text: $viewModel.email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
                     .padding()
+                    .foregroundStyle(.black)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .autocorrectionDisabled()
                 VStack(alignment: .leading) {
                     PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
                     if !viewModel.password.isEmpty {
@@ -44,6 +46,7 @@ struct RegisterView: View {
                 viewModel.registerUser()
             } label: {
                 Text("Register")
+                    .frame(maxWidth: .infinity)
             }
             .foregroundStyle(.background)
             .customButton(fillColor: .blue, borderWidth: 0)

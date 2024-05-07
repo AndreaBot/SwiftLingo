@@ -12,7 +12,7 @@ import SwiftUI
 struct LoginView: View {
     
     @Binding var viewModel: FirebaseAuthViewModel
-
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,8 +22,10 @@ struct LoginView: View {
             VStack(spacing: 30) {
                 TextField("Email", text: $viewModel.email, prompt: Text("Enter your email").foregroundStyle(.gray.secondary))
                     .padding()
+                    .foregroundStyle(.black)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .autocorrectionDisabled()
                 PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
             }
             .padding()
@@ -36,6 +38,7 @@ struct LoginView: View {
                 viewModel.loginUser()
             } label: {
                 Text("Login")
+                    .frame(maxWidth: .infinity)
             }
             .foregroundStyle(.background)
             .customButton(fillColor: .blue, borderWidth: 0)

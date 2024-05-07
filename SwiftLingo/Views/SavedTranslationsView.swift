@@ -43,8 +43,10 @@ struct SavedTranslationsView: View {
             .sheet(item: $selectedTranslation, onDismiss: {
                 firestoreViewModel.fetchTranslations()
             }) { translation in
-                DetailView(savedTranslation: translation)
-                    .presentationDetents([.medium])
+                DetailView(savedTranslation: translation, deleteFromFirestore: {
+                    await firestoreViewModel.deleteTranslation(documentName: String(translation.id))
+                }, showingFirebaseTranslations: true)
+                .presentationDetents([.medium])
             }
             .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
             } message: {
@@ -54,9 +56,9 @@ struct SavedTranslationsView: View {
         } else {
             ContentUnavailableView("Oops...", systemImage: "multiply", description: Text("You need to be logged in as a user to save and access your translations"))
         }
-           
-    }
         
+    }
+    
 }
 
 //#Preview {

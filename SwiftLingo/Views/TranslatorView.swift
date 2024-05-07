@@ -18,6 +18,7 @@ struct TranslatorView: View {
             VStack(alignment: .leading) {
                 Text("Translate")
                 TextEditor(text: $translatorViewModel.textToTranslate)
+                    .autocorrectionDisabled()
                 
             }
             Form {
@@ -77,6 +78,7 @@ struct TranslatorView: View {
                     .disabled(translatorViewModel.translation.isEmpty)
                 }
                 TextEditor(text: $translatorViewModel.translation)
+                    .disabled(true)
             }
         }
         .alert("Error", isPresented: $firestoreViewModel.showingAlert) {

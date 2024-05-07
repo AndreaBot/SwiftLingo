@@ -20,11 +20,15 @@ struct PasswordTextField: View {
                 if !showingPassword {
                     SecureField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
+                        
                 } else {
                     TextField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
+                        .autocorrectionDisabled()
+                       
                 }
             }
+            .foregroundStyle(.black)
             
             Button {
                 showingPassword.toggle()
