@@ -114,7 +114,6 @@ final class TranslatorViewModel {
     var history = [TranslationModel]()
     
     func appendToUserdefaults() {
-        
         if let sourceLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
             languageModel.id == sourceLanguage.id
         }), let targetLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
@@ -124,6 +123,8 @@ final class TranslatorViewModel {
             let newTranslation = TranslationModel(id: Date().timeIntervalSince1970, sourceLanguage: TranslatorViewModel.allLanguages[sourceLangIndex], targetLanguage: TranslatorViewModel.allLanguages[targetLangIndex], textToTranslate: textToTranslate, translation: translation)
             
             history.append(newTranslation)
+            
+            CheckUserDefaultsLimit()
             
             do {
                 let data = try JSONEncoder().encode(history)
@@ -161,18 +162,11 @@ final class TranslatorViewModel {
         }
     }
     
-//    func deleteUserDefaultValue(at position: Int) {
-//        if let index = history.firstIndex(where: { translation in
-//            translation.id == history[position].id
-//        }) {
-//            history.remove(at: index)
-//            do {
-//                let data = try JSONEncoder().encode(history)
-//                userDef.set(data, forKey: "history")
-//            } catch {
-//                print("Error encoding")
-//            }
-//         
-//        }
-//    }
+    func CheckUserDefaultsLimit() {
+        if history.count > 10 {
+            history.removeFirst()
+        } else {
+            return
+        }
+    }
 }

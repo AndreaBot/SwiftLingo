@@ -15,7 +15,7 @@ struct HistoryView: View {
     var body: some View {
         if !translatorViewModel.history.isEmpty {
             List {
-                ForEach(translatorViewModel.history) { translation in
+                ForEach(translatorViewModel.history.sorted()) { translation in
                     Button {
                         selectedTranslation = translation
                     } label: {
