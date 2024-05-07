@@ -145,4 +145,34 @@ final class TranslatorViewModel {
             }
         }
     }
+    
+    func deleteUserDefaultValue(translation: TranslationModel) {
+        if let index = history.firstIndex(where: { model in
+            model.id == translation.id
+        }) {
+            history.remove(at: index)
+            do {
+                let data = try JSONEncoder().encode(history)
+                userDef.set(data, forKey: "history")
+            } catch {
+                print("Error encoding")
+            }
+         
+        }
+    }
+    
+//    func deleteUserDefaultValue(at position: Int) {
+//        if let index = history.firstIndex(where: { translation in
+//            translation.id == history[position].id
+//        }) {
+//            history.remove(at: index)
+//            do {
+//                let data = try JSONEncoder().encode(history)
+//                userDef.set(data, forKey: "history")
+//            } catch {
+//                print("Error encoding")
+//            }
+//         
+//        }
+//    }
 }
