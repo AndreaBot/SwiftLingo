@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TranslationModel: Identifiable {
+struct TranslationModel: Identifiable, Codable {
     let id: Double
     let sourceLanguage: LanguageModel
     let targetLanguage: LanguageModel

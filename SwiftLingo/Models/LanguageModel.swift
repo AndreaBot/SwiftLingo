@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LanguageModel: Identifiable, Hashable, Comparable {
+struct LanguageModel: Identifiable, Hashable, Comparable, Codable {
     static func < (lhs: LanguageModel, rhs: LanguageModel) -> Bool {
         lhs.id < rhs.id
     }

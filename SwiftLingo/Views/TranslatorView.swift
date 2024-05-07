@@ -10,8 +10,12 @@ import SwiftUI
 struct TranslatorView: View {
     
     @Binding var firestoreViewModel: FirestoreViewModel
-    @State private var translatorViewModel = TranslatorViewModel()
+    @Binding var translatorViewModel: TranslatorViewModel
     @State private var ttsViewModel = TTSViewModel()
+    
+    //@AppStorage("history") var history: [String] = []
+    
+    
     
     var body: some View {
         VStack {
@@ -43,6 +47,7 @@ struct TranslatorView: View {
                                                                          source: translatorViewModel.sourceLanguage.sourceCode,
                                                                          target: translatorViewModel.targetLanguage.targetCode)
                             }
+                          
                         }
                         .buttonStyle(.borderedProminent)
                     }
@@ -85,6 +90,10 @@ struct TranslatorView: View {
         } message: {
             Text(firestoreViewModel.alertMessage)
         }
+        .onAppear(perform: {
+           
+            print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        })
     }
 }
 

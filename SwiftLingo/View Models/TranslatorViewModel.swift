@@ -84,6 +84,8 @@ final class TranslatorViewModel {
             if let safeData = data {
                 if let translatedText = self.parseJSON(safeData) {
                     self.translation = translatedText
+                    self.appendToUserdefaults()
+                    
                 }
             }
         })
@@ -103,6 +105,44 @@ final class TranslatorViewModel {
         } catch {
             print(error)
             return nil
+        }
+    }
+    
+    //MARK: - UserDefaults (HistoryView)
+    
+    var userDef = UserDefaults.standard
+    var history = [TranslationModel]()
+    
+    func appendToUserdefaults() {
+        
+        if let sourceLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
+            languageModel.id == sourceLanguage.id
+        }), let targetLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
+            languageModel.id == targetLanguage.id
+        }) {
+            
+            let newTranslation = TranslationModel(id: Date().timeIntervalSince1970, sourceLanguage: TranslatorViewModel.allLanguages[sourceLangIndex], targetLanguage: TranslatorViewModel.allLanguages[targetLangIndex], textToTranslate: textToTranslate, translation: translation)
+            
+            history.append(newTranslation)
+            
+            do {
+                let data = try JSONEncoder().encode(history)
+                
+                userDef.set(data, forKey: "history")
+            } catch {
+                print("Error encoding")
+            }
+            
+        }
+    }
+    
+    func loadUserDefaults() {
+        if let data = userDef.data(forKey: "history") {
+            do {
+                history = try JSONDecoder().decode([TranslationModel].self, from: data)
+            } catch {
+                print("error decoding")
+            }
         }
     }
 }

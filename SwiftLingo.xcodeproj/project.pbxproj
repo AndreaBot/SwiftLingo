@@ -33,6 +33,7 @@
 		62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DD2BE8E175000BE168 /* DetailView.swift */; };
 		62EDE4E02BE96145000BE168 /* CustomButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */; };
 		62EDE4E22BE96CF0000BE168 /* FirebaseAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */; };
+		62EDE4E82BEAD1D2000BE168 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4E72BEAD1D2000BE168 /* HistoryView.swift */; };
 		A41041900792BC5BF20EC9AE /* Pods_SwiftLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		62EDE4DD2BE8E175000BE168 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		62EDE4DF2BE96145000BE168 /* CustomButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonModifier.swift; sourceTree = "<group>"; };
 		62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthViewModel.swift; sourceTree = "<group>"; };
+		62EDE4E72BEAD1D2000BE168 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		8DDA5ECDD366FA70222842A9 /* Pods-SwiftLingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.debug.xcconfig"; sourceTree = "<group>"; };
 		9638C489FC53E3258D14C177 /* Pods_SwiftLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 				621EFE182BE42951004F44B5 /* LoginView.swift */,
 				621EFE142BE425B8004F44B5 /* MainAppView.swift */,
 				624CDFF02BE5689200ACEED2 /* TranslatorView.swift */,
+				62EDE4E72BEAD1D2000BE168 /* HistoryView.swift */,
 				62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */,
 				62EDE4DD2BE8E175000BE168 /* DetailView.swift */,
 			);
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62EDE4BA2BE776BF000BE168 /* SwiftLingoView.swift in Sources */,
+				62EDE4E82BEAD1D2000BE168 /* HistoryView.swift in Sources */,
 				621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */,
 				62EDE4E22BE96CF0000BE168 /* FirebaseAuthViewModel.swift in Sources */,
 				624CDFFB2BE62CA400ACEED2 /* SpeechData.swift in Sources */,
