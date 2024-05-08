@@ -21,6 +21,8 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
+            DismissToolbar(dismissAction: dismiss)
+            
             VStack {
                 Text(savedTranslation.sourceLanguage.flag + savedTranslation.sourceLanguage.id)
                 Text(savedTranslation.textToTranslate)

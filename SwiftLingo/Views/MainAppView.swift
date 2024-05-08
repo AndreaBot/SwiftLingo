@@ -17,19 +17,29 @@ struct MainAppView: View {
     
     @State private var showingHistory = false
     
+    @State private var selectedTab = 0
+    @State private var screenTitles = ["Translator", "My Translations"]
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             TranslatorView(firestoreViewModel: $firestoreViewModel, translatorViewModel: $translatorViewModel)
                 .tabItem {
                     Label("SwiftLingo", systemImage: "swift")
                 }
+                .tag(0)
             
             SavedTranslationsView(firestoreViewModel: $firestoreViewModel)
                 .tabItem {
                     Label("Saved translations", systemImage: "heart")
                 }
+                .tag(1)
         }
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Text(screenTitles[selectedTab])
+                    .font(.title)
+                    .fontDesign(.rounded)
+            }
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
                     showingHistory = true
@@ -49,7 +59,7 @@ struct MainAppView: View {
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)
         }
-        .sheet(isPresented: $showingHistory, content: {
+        .fullScreenCover(isPresented: $showingHistory, content: {
             HistoryView(translatorViewModel: $translatorViewModel)
         })
         .onAppear {
