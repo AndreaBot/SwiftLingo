@@ -14,6 +14,7 @@ import SwiftUI
 final class TranslatorViewModel {
     
     static let allLanguages: [LanguageModel] = [
+        LanguageModel(id: "Arabic", flag: "🇸🇦", sourceCode: "AR", targetCode: "AR", ttsCode: "ar-001"),
         LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG"),
         LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ"),
         LanguageModel(id: "Danish", flag: "🇩🇰", sourceCode: "DA", targetCode: "DA", ttsCode: "da-DK"),
