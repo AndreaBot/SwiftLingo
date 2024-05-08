@@ -12,6 +12,7 @@ struct HistoryView: View {
     @Environment(\.dismiss) var dismiss
     
     @Binding var translatorViewModel: TranslatorViewModel
+    @Binding var firestoreViewModel: FirestoreViewModel
     @State private var selectedTranslation: TranslationModel?
     
     var body: some View {
@@ -31,6 +32,16 @@ struct HistoryView: View {
                         } label: {
                             SavedTranslationComponent(savedTranslation: translation)
                         }
+                        .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                            if let currentUser = firestoreViewModel.currentUser {
+                                Button {
+                                    firestoreViewModel.saveTranslation(sourceLanguage: translation.sourceLanguage.id, textToTranslate: translation.textToTranslate, targetLanguage: translation.targetLanguage.id, translation: translation.translation)
+                                } label: {
+                                    Image(systemName: "heart")
+                                }
+                                .tint(.blue)
+                            }
+                        })
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {

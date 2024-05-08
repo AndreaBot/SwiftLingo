@@ -59,7 +59,7 @@ struct MainAppView: View {
             Text(viewModel.alertMessage)
         }
         .fullScreenCover(isPresented: $showingHistory, content: {
-            HistoryView(translatorViewModel: $translatorViewModel)
+            HistoryView(translatorViewModel: $translatorViewModel, firestoreViewModel: $firestoreViewModel)
         })
         .onAppear {
             translatorViewModel.loadUserDefaults()

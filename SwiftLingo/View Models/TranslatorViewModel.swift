@@ -29,8 +29,8 @@ final class TranslatorViewModel {
         LanguageModel(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT"),
         LanguageModel(id: "Japanese", flag: "🇯🇵", sourceCode: "JA", targetCode: "JA", ttsCode: "ja-JP"),
         LanguageModel(id: "Korean", flag: "🇰🇷", sourceCode: "KO", targetCode: "KO", ttsCode: "ko-KR"),
-       LanguageModel(id: "Lithuanian", flag: "🇱🇹", sourceCode: "LT", targetCode: "LT", ttsCode: "lt-LT"),
-       LanguageModel(id: "Latvian", flag: "🇱🇻", sourceCode: "LV", targetCode: "LV", ttsCode: "lv-LV"),
+        LanguageModel(id: "Lithuanian", flag: "🇱🇹", sourceCode: "LT", targetCode: "LT", ttsCode: "lt-LT"),
+        LanguageModel(id: "Latvian", flag: "🇱🇻", sourceCode: "LV", targetCode: "LV", ttsCode: "lv-LV"),
         LanguageModel(id: "Norwegian", flag: "🇳🇴", sourceCode: "NB", targetCode: "NB", ttsCode: "nb-NO"),
         LanguageModel(id: "Dutch", flag: "🇳🇱", sourceCode: "NL", targetCode: "NL", ttsCode: "nl-NL"),
         LanguageModel(id: "Polish", flag: "🇵🇱", sourceCode: "PL", targetCode: "PL", ttsCode: "pl-PL"),
@@ -159,7 +159,7 @@ final class TranslatorViewModel {
             } catch {
                 print("Error encoding")
             }
-         
+            
         }
     }
     
