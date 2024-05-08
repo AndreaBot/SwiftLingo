@@ -45,7 +45,7 @@ struct HistoryView: View {
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
-                            translatorViewModel.deleteUserDefaultValue(translation: translatorViewModel.history[index])
+                            translatorViewModel.deleteHistoryUserDefaultValue(translation: translatorViewModel.history[index])
                         }
                     })
                     .listRowSeparator(.hidden)
@@ -56,7 +56,7 @@ struct HistoryView: View {
                 .listRowSpacing(5)
                 .sheet(item: $selectedTranslation) { translation in
                     DetailView(savedTranslation: translation, deleteFromUserDefaults: {
-                        translatorViewModel.deleteUserDefaultValue(translation: translation)
+                        translatorViewModel.deleteHistoryUserDefaultValue(translation: translation)
                     }, showingFirebaseTranslations: false)
                     .presentationDetents([.medium])
                 }

@@ -85,7 +85,7 @@ final class TranslatorViewModel {
             if let safeData = data {
                 if let translatedText = self.parseJSON(safeData) {
                     self.translation = translatedText
-                    self.appendToUserdefaults()
+                    self.appendToHistoryUserdefaults()
                     
                 }
             }
@@ -114,7 +114,7 @@ final class TranslatorViewModel {
     var userDef = UserDefaults.standard
     var history = [TranslationModel]()
     
-    func appendToUserdefaults() {
+    func appendToHistoryUserdefaults() {
         if let sourceLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
             languageModel.id == sourceLanguage.id
         }), let targetLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
@@ -138,7 +138,7 @@ final class TranslatorViewModel {
         }
     }
     
-    func loadUserDefaults() {
+    func loadHistoryUserDefaults() {
         if let data = userDef.data(forKey: "history") {
             do {
                 history = try JSONDecoder().decode([TranslationModel].self, from: data)
@@ -148,7 +148,7 @@ final class TranslatorViewModel {
         }
     }
     
-    func deleteUserDefaultValue(translation: TranslationModel) {
+    func deleteHistoryUserDefaultValue(translation: TranslationModel) {
         if let index = history.firstIndex(where: { model in
             model.id == translation.id
         }) {
@@ -170,4 +170,29 @@ final class TranslatorViewModel {
             return
         }
     }
+    
+    //MARK: - UserDefaults (Remember last used languages)
+    
+    func setDefaultLanguages() {
+        do {
+            let sourceLanguageData = try JSONEncoder().encode(sourceLanguage)
+            let targetLanguageData = try JSONEncoder().encode(targetLanguage)
+            userDef.set(sourceLanguageData, forKey: "defaultSourceLanguage")
+            userDef.set(targetLanguageData, forKey: "defaultTargetLanguage")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func loadDefaultLanguages() {
+        if let savedSource = userDef.data(forKey: "defaultSourceLanguage"), let savedTarget = userDef.data(forKey: "defaultTargetLanguage") {
+            do {
+                sourceLanguage = try JSONDecoder().decode(LanguageModel.self, from: savedSource)
+                targetLanguage = try JSONDecoder().decode(LanguageModel.self, from: savedTarget)
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
+

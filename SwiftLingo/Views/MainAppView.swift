@@ -62,7 +62,7 @@ struct MainAppView: View {
             HistoryView(translatorViewModel: $translatorViewModel, firestoreViewModel: $firestoreViewModel)
         })
         .onAppear {
-            translatorViewModel.loadUserDefaults()
+            translatorViewModel.loadHistoryUserDefaults()
         }
     }
 }
