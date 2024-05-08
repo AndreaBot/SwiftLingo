@@ -22,7 +22,6 @@
 		624CDFF52BE56C8800ACEED2 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */; };
 		624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */; };
 		624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */; };
-		624CDFFB2BE62CA400ACEED2 /* SpeechData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */; };
 		624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */; };
 		624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CE0022BE6359800ACEED2 /* PasswordRating.swift */; };
 		62EDE4BA2BE776BF000BE168 /* SwiftLingoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */; };
@@ -56,7 +55,6 @@
 		624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationData.swift; sourceTree = "<group>"; };
 		624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSViewModel.swift; sourceTree = "<group>"; };
-		624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechData.swift; sourceTree = "<group>"; };
 		624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		624CE0022BE6359800ACEED2 /* PasswordRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRating.swift; sourceTree = "<group>"; };
 		62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoView.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				621EFE102BE4248F004F44B5 /* NavigationScreens.swift */,
 				624CDFF42BE56C8800ACEED2 /* LanguageModel.swift */,
 				624CDFF62BE57E4B00ACEED2 /* TranslationData.swift */,
-				624CDFFA2BE62CA400ACEED2 /* SpeechData.swift */,
 				62EDE4D92BE8CDEC000BE168 /* TranslationModel.swift */,
 			);
 			path = Models;
@@ -314,7 +311,6 @@
 				62EDE4E82BEAD1D2000BE168 /* HistoryView.swift in Sources */,
 				621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */,
 				62EDE4E22BE96CF0000BE168 /* FirebaseAuthViewModel.swift in Sources */,
-				624CDFFB2BE62CA400ACEED2 /* SpeechData.swift in Sources */,
 				624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */,
 				621EFE192BE42951004F44B5 /* LoginView.swift in Sources */,
 				62EDE4EA2BEAF47F000BE168 /* DismissToolbar.swift in Sources */,

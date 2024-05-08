@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct DetailView: View {
     
@@ -18,6 +19,7 @@ struct DetailView: View {
     var deleteFromUserDefaults: (() -> Void)?
     
     let showingFirebaseTranslations: Bool
+    
     
     var body: some View {
         VStack {
@@ -39,12 +41,7 @@ struct DetailView: View {
             
             HStack {
                 Button {
-                    Task {
-                        await ttsViewModel.generateVoice(text: savedTranslation.translation,
-                                                         languageCode: savedTranslation.targetLanguage.ttsCode,
-                                                         name: savedTranslation.targetLanguage.ttsVoice,
-                                                         ssmlGender: savedTranslation.targetLanguage.ttsGender)
-                    }
+                    ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode)
                 } label: {
                     Image(systemName: "speaker.wave.2.fill")
                 }
@@ -75,8 +72,8 @@ struct DetailView: View {
 }
 
 //#Preview {
-//    let sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB", ttsGender: "FEMALE", ttsVoice: "en-GB-Standard-C")
-//    let targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT", ttsGender: "FEMALE", ttsVoice: "it-IT-Standard-A")
+//    let sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
+//    let targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
 //    let saved = TranslationModel(id: 0.2, sourceLanguage: sourceLanguage, targetLanguage: targetLanguage, textToTranslate: "Coffee", translation: "Caffe'")
 //
 //    return DetailView(savedTranslation: saved)

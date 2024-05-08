@@ -54,7 +54,6 @@ struct MainAppView: View {
                         }
                 }
             }
-            
         }
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)

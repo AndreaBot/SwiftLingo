@@ -17,6 +17,4 @@ struct LanguageModel: Identifiable, Hashable, Comparable, Codable {
     let sourceCode: String
     let targetCode: String
     let ttsCode: String
-    let ttsGender: String
-    let ttsVoice: String
 }

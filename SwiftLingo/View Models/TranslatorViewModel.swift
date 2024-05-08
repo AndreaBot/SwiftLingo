@@ -14,39 +14,39 @@ import SwiftUI
 final class TranslatorViewModel {
     
     static let allLanguages: [LanguageModel] = [
-        LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG", ttsGender: "FEMALE", ttsVoice: "bg-BG-Standard-A"),
-        LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ", ttsGender: "FEMALE", ttsVoice: "cs-CZ-Standard-A"),
-        LanguageModel(id: "Danish", flag: "🇩🇰", sourceCode: "DA", targetCode: "DA", ttsCode: "da-DK", ttsGender: "FEMALE", ttsVoice: "da-DK-Standard-E"),
-        LanguageModel(id: "German", flag: "🇩🇪", sourceCode: "DE", targetCode: "DE", ttsCode: "de-DE", ttsGender: "FEMALE", ttsVoice: "de-DE-Standard-C"),
-        LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR", ttsGender: "FEMALE", ttsVoice: "el-GR-Standard-A"),
-        LanguageModel(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB", ttsGender: "FEMALE", ttsVoice: "en-GB-Standard-C"),
-        LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES", ttsGender: "FEMALE", ttsVoice: "es-ES-Standard-C"),
-        LanguageModel(id: "Finnish", flag: "🇫🇮", sourceCode: "FI", targetCode: "FI", ttsCode: "fi-FI", ttsGender: "FEMALE", ttsVoice: "fi-FI-Standard-A"),
-        LanguageModel(id: "French", flag: "🇫🇷", sourceCode: "FR", targetCode: "FR", ttsCode: "fr-FR", ttsGender: "FEMALE", ttsVoice: "fr-FR-Neural2-C"),
-        LanguageModel(id: "Hungarian", flag: "🇭🇺", sourceCode: "HU", targetCode: "HU", ttsCode: "hu-HU", ttsGender: "FEMALE", ttsVoice: "hu-HU-Standard-A"),
-        LanguageModel(id: "Indonesian", flag: "🇮🇩", sourceCode: "ID", targetCode: "ID", ttsCode: "id-ID", ttsGender: "FEMALE", ttsVoice: "id-ID-Standard-A"),
-        LanguageModel(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT", ttsGender: "FEMALE", ttsVoice: "it-IT-Standard-A"),
-        LanguageModel(id: "Japanese", flag: "🇯🇵", sourceCode: "JA", targetCode: "JA", ttsCode: "ja-JP", ttsGender: "FEMALE", ttsVoice: "ja-JP-Standard-A"),
-        LanguageModel(id: "Korean", flag: "🇰🇷", sourceCode: "KO", targetCode: "KO", ttsCode: "ko-KR", ttsGender: "FEMALE", ttsVoice: "ko-KR-Standard-A"),
-        LanguageModel(id: "Lithuanian", flag: "🇱🇹", sourceCode: "LT", targetCode: "LT", ttsCode: "lt-LT", ttsGender: "MALE", ttsVoice: "lt-LT-Standard-A"),
-        LanguageModel(id: "Latvian", flag: "🇱🇻", sourceCode: "LV", targetCode: "LV", ttsCode: "lv-LV", ttsGender: "MALE", ttsVoice: "lv-LV-Standard-A"),
-        LanguageModel(id: "Norwegian", flag: "🇳🇴", sourceCode: "NB", targetCode: "NB", ttsCode: "nb-NO", ttsGender: "FEMALE", ttsVoice: "nb-NO-Standard-A"),
-        LanguageModel(id: "Dutch", flag: "🇳🇱", sourceCode: "NL", targetCode: "NL", ttsCode: "nl-NL", ttsGender: "FEMALE", ttsVoice: "nl-NL-Standard-A"),
-        LanguageModel(id: "Polish", flag: "🇵🇱", sourceCode: "PL", targetCode: "PL", ttsCode: "pl-PL", ttsGender: "FEMALE", ttsVoice: "pl-PL-Standard-A"),
-        LanguageModel(id: "Portugese (PT)", flag: "🇵🇹", sourceCode: "PT", targetCode: "PT-PT", ttsCode: "pt-PT", ttsGender: "FEMALE", ttsVoice: "pt-PT-Standard-A"),
-        LanguageModel(id: "Portugese (BR)", flag: "🇧🇷", sourceCode: "PT", targetCode: "PT-BR", ttsCode: "pt-BR", ttsGender: "FEMALE", ttsVoice: "pt-BR-Standard-A"),
-        LanguageModel(id: "Romanian", flag: "🇷🇴", sourceCode: "RO", targetCode: "RO", ttsCode: "ro-RO", ttsGender: "FEMALE", ttsVoice: "ro-RO-Standard-A"),
-        LanguageModel(id: "Russian", flag: "🇷🇺", sourceCode: "RU", targetCode: "RU", ttsCode: "ru-RU", ttsGender: "FEMALE", ttsVoice: "ru-RU-Standard-A"),
-        LanguageModel(id: "Slovak", flag: "🇸🇰", sourceCode: "SK", targetCode: "SK", ttsCode: "sk-SK", ttsGender: "FEMALE", ttsVoice: "sk-SK-Standard-A"),
-        LanguageModel(id: "Swedish", flag: "🇸🇪", sourceCode: "SV", targetCode: "SV", ttsCode: "sv-SE", ttsGender: "FEMALE", ttsVoice: "sv-SE-Standard-A"),
-        LanguageModel(id: "Turkish", flag: "🇹🇷", sourceCode: "TR", targetCode: "TR", ttsCode: "tr-TR", ttsGender: "FEMALE", ttsVoice: "tr-TR-Standard-A"),
-        LanguageModel(id: "Ukrainian", flag: "🇺🇦", sourceCode: "UK", targetCode: "UK", ttsCode: "uk-UA", ttsGender: "FEMALE", ttsVoice: "uk-UA-Standard-A"),
-        LanguageModel(id: "Chinese", flag: "🇨🇳", sourceCode: "ZH", targetCode: "ZH", ttsCode: "cmn-CN", ttsGender: "FEMALE", ttsVoice: "cmn-CN-Standard-A")
+        LanguageModel(id: "Bulgarian", flag: "🇧🇬", sourceCode: "BG", targetCode: "BG", ttsCode: "bg-BG"),
+        LanguageModel(id: "Czech", flag: "🇨🇿", sourceCode: "CS", targetCode: "CS", ttsCode: "cs-CZ"),
+        LanguageModel(id: "Danish", flag: "🇩🇰", sourceCode: "DA", targetCode: "DA", ttsCode: "da-DK"),
+        LanguageModel(id: "German", flag: "🇩🇪", sourceCode: "DE", targetCode: "DE", ttsCode: "de-DE"),
+        LanguageModel(id: "Greek", flag: "🇬🇷", sourceCode: "EL", targetCode: "EL", ttsCode: "el-GR"),
+        LanguageModel(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB"),
+        LanguageModel(id: "Spanish", flag: "🇪🇸", sourceCode: "ES", targetCode: "ES", ttsCode: "es-ES"),
+        LanguageModel(id: "Finnish", flag: "🇫🇮", sourceCode: "FI", targetCode: "FI", ttsCode: "fi-FI"),
+        LanguageModel(id: "French", flag: "🇫🇷", sourceCode: "FR", targetCode: "FR", ttsCode: "fr-FR"),
+        LanguageModel(id: "Hungarian", flag: "🇭🇺", sourceCode: "HU", targetCode: "HU", ttsCode: "hu-HU"),
+        LanguageModel(id: "Indonesian", flag: "🇮🇩", sourceCode: "ID", targetCode: "ID", ttsCode: "id-ID"),
+        LanguageModel(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT"),
+        LanguageModel(id: "Japanese", flag: "🇯🇵", sourceCode: "JA", targetCode: "JA", ttsCode: "ja-JP"),
+        LanguageModel(id: "Korean", flag: "🇰🇷", sourceCode: "KO", targetCode: "KO", ttsCode: "ko-KR"),
+       LanguageModel(id: "Lithuanian", flag: "🇱🇹", sourceCode: "LT", targetCode: "LT", ttsCode: "lt-LT"),
+       LanguageModel(id: "Latvian", flag: "🇱🇻", sourceCode: "LV", targetCode: "LV", ttsCode: "lv-LV"),
+        LanguageModel(id: "Norwegian", flag: "🇳🇴", sourceCode: "NB", targetCode: "NB", ttsCode: "nb-NO"),
+        LanguageModel(id: "Dutch", flag: "🇳🇱", sourceCode: "NL", targetCode: "NL", ttsCode: "nl-NL"),
+        LanguageModel(id: "Polish", flag: "🇵🇱", sourceCode: "PL", targetCode: "PL", ttsCode: "pl-PL"),
+        LanguageModel(id: "Portugese (PT)", flag: "🇵🇹", sourceCode: "PT", targetCode: "PT-PT", ttsCode: "pt-PT"),
+        LanguageModel(id: "Portugese (BR)", flag: "🇧🇷", sourceCode: "PT", targetCode: "PT-BR", ttsCode: "pt-BR"),
+        LanguageModel(id: "Romanian", flag: "🇷🇴", sourceCode: "RO", targetCode: "RO", ttsCode: "ro-RO"),
+        LanguageModel(id: "Russian", flag: "🇷🇺", sourceCode: "RU", targetCode: "RU", ttsCode: "ru-RU"),
+        LanguageModel(id: "Slovak", flag: "🇸🇰", sourceCode: "SK", targetCode: "SK", ttsCode: "sk-SK"),
+        LanguageModel(id: "Swedish", flag: "🇸🇪", sourceCode: "SV", targetCode: "SV", ttsCode: "sv-SE"),
+        LanguageModel(id: "Turkish", flag: "🇹🇷", sourceCode: "TR", targetCode: "TR", ttsCode: "tr-TR"),
+        LanguageModel(id: "Ukrainian", flag: "🇺🇦", sourceCode: "UK", targetCode: "UK", ttsCode: "uk-UA"),
+        LanguageModel(id: "Chinese", flag: "🇨🇳", sourceCode: "ZH", targetCode: "ZH", ttsCode: "zh-CN")
     ]
     
     var textToTranslate = ""
-    var sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB", ttsGender: "FEMALE", ttsVoice: "en-GB-Standard-C")
-    var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT", ttsGender: "FEMALE", ttsVoice: "it-IT-Standard-A")
+    var sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
+    var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
     var translation = ""
     
     

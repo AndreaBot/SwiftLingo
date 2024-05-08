@@ -9,6 +9,8 @@ import FirebaseAuth
 import FirebaseCore
 import SwiftUI
 
+import AVFoundation
+
 struct SplashScreenView: View {
     
     @State private var viewModel = FirebaseAuthViewModel()
