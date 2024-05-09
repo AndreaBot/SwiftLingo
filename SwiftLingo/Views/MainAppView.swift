@@ -10,7 +10,7 @@ import FirebaseAuth
 import SwiftUI
 
 struct MainAppView: View {
-
+    
     @Binding var viewModel: FirebaseAuthViewModel
     @State private var translatorViewModel = TranslatorViewModel()
     @State private var firestoreViewModel = FirestoreViewModel()
@@ -46,12 +46,13 @@ struct MainAppView: View {
                 } label: {
                     Image(systemName: "clock.arrow.2.circlepath")
                 }
-                if Auth.auth().currentUser != nil {
-                        Button {
-                            viewModel.logoutUser()
-                        } label: {
-                            Image(systemName: "rectangle.portrait.and.arrow.forward")
-                        }
+                Button {
+                    if firestoreViewModel.currentUser != nil {
+                        viewModel.logoutUser()
+                    }
+                    viewModel.path.removeAll()
+                } label: {
+                    Image(systemName: "rectangle.portrait.and.arrow.forward")
                 }
             }
         }

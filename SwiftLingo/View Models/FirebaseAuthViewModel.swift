@@ -60,7 +60,6 @@ final class FirebaseAuthViewModel {
     func logoutUser() {
         do {
             try Auth.auth().signOut()
-            self.path.removeAll()
         } catch let e as NSError {
             self.alertMessage = e.localizedDescription
             self.showingAlert = true
