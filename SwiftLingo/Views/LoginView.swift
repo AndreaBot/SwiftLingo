@@ -12,6 +12,7 @@ import SwiftUI
 struct LoginView: View {
     
     @Binding var viewModel: FirebaseAuthViewModel
+    @FocusState var focus: Bool
     
     var body: some View {
         VStack {
@@ -26,7 +27,9 @@ struct LoginView: View {
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .autocorrectionDisabled()
-                PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
+                    .keyboardType(.emailAddress)
+                    .focused($focus)
+                PasswordTextField(password: $viewModel.password, focus: $focus, prompt: "Enter your password")
             }
             .padding()
             .background(.thickMaterial)
@@ -49,6 +52,16 @@ struct LoginView: View {
         }
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)
+        }
+        .toolbar {
+            ToolbarItem(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        focus = false
+                    }
+                }
+            }
         }
     }
 }

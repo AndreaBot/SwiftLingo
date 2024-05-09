@@ -12,6 +12,7 @@ import SwiftUI
 struct RegisterView: View {
     
     @Binding var viewModel: FirebaseAuthViewModel
+    @FocusState var focus: Bool
     
     var body: some View {
         VStack {
@@ -28,13 +29,17 @@ struct RegisterView: View {
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .autocorrectionDisabled()
+                    .keyboardType(.emailAddress)
+                    .focused($focus)
+                
                 VStack(alignment: .leading) {
-                    PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
+                    PasswordTextField(password: $viewModel.password, focus: $focus, prompt: "Enter your password")
+                    
                     if !viewModel.password.isEmpty {
                         PasswordRating(password: $viewModel.password)
                     }
                 }
-                PasswordTextField(password: $viewModel.passwordConfirmation, prompt: "Confirm your password")
+                PasswordTextField(password: $viewModel.passwordConfirmation, focus: $focus, prompt: "Confirm your password")
             }
             .padding()
             .background(.thickMaterial)
@@ -57,6 +62,16 @@ struct RegisterView: View {
         }
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)
+        }
+        .toolbar {
+            ToolbarItem(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        focus = false
+                    }
+                }
+            }
         }
     }
 }

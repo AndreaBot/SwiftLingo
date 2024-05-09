@@ -45,7 +45,7 @@ final class TranslatorViewModel {
         LanguageModel(id: "Chinese", flag: "🇨🇳", sourceCode: "ZH", targetCode: "ZH", ttsCode: "zh-CN")
     ]
     
-    var textToTranslate = ""
+    var textToTranslate = "What would you like to translate?"
     var sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
     var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
     var translation = ""

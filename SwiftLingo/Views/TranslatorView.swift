@@ -13,15 +13,24 @@ struct TranslatorView: View {
     @Binding var firestoreViewModel: FirestoreViewModel
     @Binding var translatorViewModel: TranslatorViewModel
     @State private var ttsViewModel = TTSViewModel()
+    @FocusState var focus: Bool
     
     
     var body: some View {
+        NavigationView {
             VStack {
                 VStack(alignment: .leading) {
                     Text("Translate")
                     TextEditor(text: $translatorViewModel.textToTranslate)
                         .autocorrectionDisabled()
+                        .focused($focus)
+                        .onChange(of: focus) {
+                            if focus {
+                                translatorViewModel.textToTranslate = ""
+                            }
+                        }
                 }
+                
                 Form {
                     VStack(spacing: 20) {
                         Picker("Select source language", selection: $translatorViewModel.sourceLanguage) {
@@ -77,24 +86,36 @@ struct TranslatorView: View {
                         .disabled(true)
                 }
             }
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button("Done") {
+                            focus = false
+                        }
+                    }
+                }
+            }
             .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
             } message: {
                 Text(firestoreViewModel.alertMessage)
             }
-            .onAppear {
-                translatorViewModel.loadDefaultLanguages()
-                //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-            }
-            .onChange(of: translatorViewModel.sourceLanguage) { _, _ in
-                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.sourceLanguage, key: "defaultSourceLanguage")
-            }
-            .onChange(of: translatorViewModel.targetLanguage) { _, _ in
-                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.targetLanguage, key: "defaultTargetLanguage")
-            }
-            .onChange(of: translatorViewModel.history) { _, _ in
-                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.history, key: "history")
-            }
         }
+        .onAppear {
+            translatorViewModel.loadDefaultLanguages()
+            //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        }
+        .onChange(of: translatorViewModel.sourceLanguage) { _, _ in
+            translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.sourceLanguage, key: "defaultSourceLanguage")
+        }
+        .onChange(of: translatorViewModel.targetLanguage) { _, _ in
+            translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.targetLanguage, key: "defaultTargetLanguage")
+        }
+        .onChange(of: translatorViewModel.history) { _, _ in
+            translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.history, key: "history")
+        }
+    }
 }
 
 //#Preview {

@@ -20,6 +20,7 @@ struct MainAppView: View {
     @State private var selectedTab = 0
     @State private var screenTitles = ["Translator", "My Translations"]
     
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             TranslatorView(firestoreViewModel: $firestoreViewModel, translatorViewModel: $translatorViewModel)
