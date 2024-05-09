@@ -15,8 +15,10 @@ struct SavedTranslationComponent: View {
         HStack {
             Text(savedTranslation.sourceLanguage.flag)
             Text(savedTranslation.textToTranslate)
+                .lineLimit(1)
             Spacer()
             Text(savedTranslation.translation)
+                .lineLimit(1)
             Text(savedTranslation.targetLanguage.flag)
         }
         .padding()

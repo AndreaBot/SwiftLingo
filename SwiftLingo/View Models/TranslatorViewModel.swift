@@ -109,6 +109,17 @@ final class TranslatorViewModel {
         }
     }
     
+    func checkForNewLines() {
+        for _ in textToTranslate {
+            if let i = textToTranslate.firstIndex(where: { Character in
+                Character.isNewline
+            }) {
+                textToTranslate.remove(at: i)
+                textToTranslate.insert(" ", at: i)
+            }
+        }
+    }
+    
     //MARK: - UserDefaults (HistoryView)
     
     var userDef = UserDefaults.standard

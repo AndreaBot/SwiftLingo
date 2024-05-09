@@ -48,6 +48,7 @@ struct TranslatorView: View {
                         }
                         Section {
                             Button("Translate") {
+                                translatorViewModel.checkForNewLines()
                                 Task {
                                     await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
                                                                              source: translatorViewModel.sourceLanguage.sourceCode,

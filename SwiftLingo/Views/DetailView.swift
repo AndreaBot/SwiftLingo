@@ -64,6 +64,7 @@ struct DetailView: View {
                 }
             }
         }
+        .padding()
         .containerRelativeFrame(.horizontal) { size, axis in
             size
         }
