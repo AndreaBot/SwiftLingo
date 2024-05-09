@@ -81,12 +81,18 @@ struct TranslatorView: View {
             } message: {
                 Text(firestoreViewModel.alertMessage)
             }
-            .onAppear(perform: {
+            .onAppear {
                 translatorViewModel.loadDefaultLanguages()
                 //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-            })
-            .onChange(of: [translatorViewModel.sourceLanguage, translatorViewModel.targetLanguage]) { oldValue, newValue in
-                translatorViewModel.setDefaultLanguages()
+            }
+            .onChange(of: translatorViewModel.sourceLanguage) { _, _ in
+                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.sourceLanguage, key: "defaultSourceLanguage")
+            }
+            .onChange(of: translatorViewModel.targetLanguage) { _, _ in
+                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.targetLanguage, key: "defaultTargetLanguage")
+            }
+            .onChange(of: translatorViewModel.history) { _, _ in
+                translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.history, key: "history")
             }
         }
 }

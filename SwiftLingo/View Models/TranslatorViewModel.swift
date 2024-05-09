@@ -112,7 +112,7 @@ final class TranslatorViewModel {
     //MARK: - UserDefaults (HistoryView)
     
     var userDef = UserDefaults.standard
-    var history = [TranslationModel]()
+    var history: [TranslationModel] = []
     
     func appendToHistoryUserdefaults() {
         if let sourceLangIndex = TranslatorViewModel.allLanguages.firstIndex(where: { languageModel in
@@ -126,15 +126,6 @@ final class TranslatorViewModel {
             history.append(newTranslation)
             
             CheckUserDefaultsLimit()
-            
-            do {
-                let data = try JSONEncoder().encode(history)
-                
-                userDef.set(data, forKey: "history")
-            } catch {
-                print("Error encoding")
-            }
-            
         }
     }
     
@@ -153,13 +144,6 @@ final class TranslatorViewModel {
             model == translation
         }) {
             history.remove(at: index)
-            do {
-                let data = try JSONEncoder().encode(history)
-                userDef.set(data, forKey: "history")
-            } catch {
-                print("Error encoding")
-            }
-            
         }
     }
     
@@ -173,17 +157,6 @@ final class TranslatorViewModel {
     
     //MARK: - UserDefaults (Remember last used languages)
     
-    func setDefaultLanguages() {
-        do {
-            let sourceLanguageData = try JSONEncoder().encode(sourceLanguage)
-            let targetLanguageData = try JSONEncoder().encode(targetLanguage)
-            userDef.set(sourceLanguageData, forKey: "defaultSourceLanguage")
-            userDef.set(targetLanguageData, forKey: "defaultTargetLanguage")
-        } catch {
-            print(error)
-        }
-    }
-    
     func loadDefaultLanguages() {
         if let savedSource = userDef.data(forKey: "defaultSourceLanguage"), let savedTarget = userDef.data(forKey: "defaultTargetLanguage") {
             do {
@@ -194,5 +167,29 @@ final class TranslatorViewModel {
             }
         }
     }
+    
+    //MARK: - Reusable Encoding functions
+    
+    func setDefaultValue<T: Codable>(valueToStore: T, key: String) {
+        do {
+            let data = try JSONEncoder().encode(valueToStore)
+            userDef.set(data, forKey: key)
+        } catch {
+            print(error)
+        }
+    }
+    
+//    func loadDefaultValue<T: Codable>(key: String) -> T? {
+//        if let savedData = userDef.data(forKey: key) {
+//            do {
+//                let decoded = try JSONDecoder().decode(T.self, from: savedData)
+//                return decoded
+//            } catch {
+//                print(error)
+//                return nil
+//            }
+//        }
+//        return nil
+//    }
 }
 
