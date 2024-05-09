@@ -24,7 +24,6 @@ struct HistoryView: View {
                 DismissToolbar(dismissAction: dismiss)
             }
             if !translatorViewModel.history.isEmpty {
-                
                 List {
                     ForEach(translatorViewModel.history.sorted()) { translation in
                         Button {
@@ -33,7 +32,7 @@ struct HistoryView: View {
                             SavedTranslationComponent(savedTranslation: translation)
                         }
                         .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
-                            if let currentUser = firestoreViewModel.currentUser {
+                            if let _ = firestoreViewModel.currentUser {
                                 Button {
                                     firestoreViewModel.saveTranslation(sourceLanguage: translation.sourceLanguage.id, textToTranslate: translation.textToTranslate, targetLanguage: translation.targetLanguage.id, translation: translation.translation)
                                 } label: {
@@ -42,12 +41,14 @@ struct HistoryView: View {
                                 .tint(.blue)
                             }
                         })
-                    }
-                    .onDelete(perform: { indexSet in
-                        for index in indexSet {
-                            translatorViewModel.deleteHistoryUserDefaultValue(translation: translatorViewModel.history[index])
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                translatorViewModel.deleteHistoryUserDefaultValue(translation: translation)
+                            } label: {
+                                Image(systemName: "trash")
+                            }
                         }
-                    })
+                    }
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 2.5, leading: 5, bottom: 2.5, trailing: 5))
                 }
@@ -60,7 +61,6 @@ struct HistoryView: View {
                     }, showingFirebaseTranslations: false)
                     .presentationDetents([.medium])
                 }
-                
             } else {
                 ContentUnavailableView("Oops, nothing to see here...", systemImage: "ellipsis", description: Text("Your 10 most recent translations will automatically appear here."))
             }

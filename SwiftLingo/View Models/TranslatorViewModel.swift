@@ -150,7 +150,7 @@ final class TranslatorViewModel {
     
     func deleteHistoryUserDefaultValue(translation: TranslationModel) {
         if let index = history.firstIndex(where: { model in
-            model.id == translation.id
+            model == translation
         }) {
             history.remove(at: index)
             do {
