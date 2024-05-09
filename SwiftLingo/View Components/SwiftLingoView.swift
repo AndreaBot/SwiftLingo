@@ -14,12 +14,13 @@ struct SwiftLingoView: View {
             Image(.swiftLingoLogo)
                 .resizable()
                 .scaledToFit()
-                .containerRelativeFrame([.horizontal]) { size, axis in
-                    size * 0.5
-                }
+            
             Text("SwiftLingo")
                 .font(.largeTitle).fontWeight(.heavy)
                 .fontDesign(.rounded)
+        }
+        .containerRelativeFrame([.vertical]) { size, axis in
+            size * 0.2
         }
     }
 }
