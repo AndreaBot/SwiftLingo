@@ -55,7 +55,7 @@ final class TranslatorViewModel {
     
     let headers = [
         "content-type": "application/json",
-        "X-RapidAPI-Key": "38fde48a4dmsh982cb7ed015ff93p1529c1jsned543da8ef7a",
+        "X-RapidAPI-Key": " 415fbf1276msh25a78f8cafef37ep102f63jsn586d8d958f2b",
         "X-RapidAPI-Host": "deepl-translator.p.rapidapi.com"
     ]
     
