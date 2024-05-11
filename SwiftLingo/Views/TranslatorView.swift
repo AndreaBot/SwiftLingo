@@ -13,6 +13,7 @@ struct TranslatorView: View {
     @Binding var firestoreViewModel: FirestoreViewModel
     @Binding var translatorViewModel: TranslatorViewModel
     @State private var ttsViewModel = TTSViewModel()
+    //    @State private var translationSaved = false
     @FocusState var focus: Bool
     
     
@@ -50,6 +51,7 @@ struct TranslatorView: View {
                             Button("Translate") {
                                 translatorViewModel.checkForNewLines()
                                 Task {
+                                    firestoreViewModel.translationSaved = false
                                     await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
                                                                              source: translatorViewModel.sourceLanguage.sourceCode,
                                                                              target: translatorViewModel.targetLanguage.targetCode)
@@ -71,16 +73,20 @@ struct TranslatorView: View {
                         Button {
                             firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
                         } label: {
-                            Image(systemName: "heart")
-                                .tint(.pink)
+                            Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
+                                .tint(firestoreViewModel.translationSaved ? .red : .primary)
                         }
                         .disabled(translatorViewModel.translation.isEmpty)
+                        .contentTransition(.symbolEffect(.replace))
                         
                         Button {
                             ttsViewModel.readTranslation(text: translatorViewModel.translation, language: translatorViewModel.targetLanguage.ttsCode)
                         } label: {
-                            Image(systemName: "speaker.wave.2.fill")
+                            Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
+                                .foregroundStyle(.blue)
+                                .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
                         }
+                        .contentTransition(.symbolEffect(.replace))
                         .disabled(translatorViewModel.translation.isEmpty)
                     }
                     TextEditor(text: $translatorViewModel.translation)

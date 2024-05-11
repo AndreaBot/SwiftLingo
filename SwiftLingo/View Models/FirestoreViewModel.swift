@@ -19,6 +19,7 @@ final class FirestoreViewModel {
     
     var alertMessage = ""
     var showingAlert = false
+    var translationSaved = false
     
     func fetchTranslations() {
         if let currentUser = currentUser {
@@ -62,7 +63,7 @@ final class FirestoreViewModel {
     
     func saveTranslation(sourceLanguage: String, textToTranslate: String, targetLanguage: String, translation: String) {
         guard currentUser != nil  else {
-            alertMessage = "You need to be logged in as a user to save translations."
+            alertMessage = "You must be logged in as a user to save translations."
             showingAlert = true
             return
             }
@@ -79,6 +80,8 @@ final class FirestoreViewModel {
                 if let e = error {
                     self.alertMessage = e.localizedDescription
                     self.showingAlert = true
+                } else {
+                    self.translationSaved = true
                 }
             }
         }

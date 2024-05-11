@@ -43,8 +43,12 @@ struct DetailView: View {
                 Button {
                     ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode)
                 } label: {
-                    Image(systemName: "speaker.wave.2.fill")
+                    Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
+                        .foregroundStyle(.blue)
+                        .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
                 }
+                .contentTransition(.symbolEffect(.replace))
+                
                 Spacer()
                 Button {
                     if showingFirebaseTranslations {

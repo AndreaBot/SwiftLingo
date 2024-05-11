@@ -14,6 +14,7 @@ struct HistoryView: View {
     @Binding var translatorViewModel: TranslatorViewModel
     @Binding var firestoreViewModel: FirestoreViewModel
     @State private var selectedTranslation: TranslationModel?
+    @State private var symbolIsAnimated = false
     
     var body: some View {
         VStack {
@@ -63,6 +64,10 @@ struct HistoryView: View {
                 }
             } else {
                 ContentUnavailableView("Oops, nothing to see here...", systemImage: "ellipsis", description: Text("Your 10 most recent translations will automatically appear here."))
+                    .symbolEffect(.variableColor.iterative, options: .repeating, value: symbolIsAnimated)
+                    .onAppear {
+                        symbolIsAnimated.toggle()
+                    }
             }
         }
         .padding()

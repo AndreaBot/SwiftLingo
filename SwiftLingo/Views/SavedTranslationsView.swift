@@ -11,6 +11,7 @@ struct SavedTranslationsView: View {
     
     @Binding var firestoreViewModel: FirestoreViewModel
     @State private var selectedTranslation: TranslationModel? = nil
+    @State private var symbolIsAnimated = false
     
     var body: some View {
         VStack {
@@ -52,11 +53,19 @@ struct SavedTranslationsView: View {
                         Text(firestoreViewModel.alertMessage)
                     }
                 } else {
-                    ContentUnavailableView("Oops, nothing to see here...", systemImage: "heart.slash", description: Text("Save your translations to see them listed here."))
+                    ContentUnavailableView("Oops, nothing to see here...", systemImage: "heart.slash", description: Text("You haven't saved any translation yet. Tap the ❤️ button next to you translation to save it"))
+                        .symbolEffect(.bounce.down, value: symbolIsAnimated)
+                        .onAppear {
+                            symbolIsAnimated.toggle()
+                        }
                 }
                 
             } else {
-                ContentUnavailableView("Oops...", systemImage: "multiply", description: Text("You need to be logged in as a user to save and access your translations"))
+                ContentUnavailableView("Oops...", systemImage: "xmark", description: Text("You must be logged in as a user to save and access your translations"))
+                    .symbolEffect(.bounce.down, value: symbolIsAnimated)
+                    .onAppear {
+                        symbolIsAnimated.toggle()
+                    }
             }
         }
         .onAppear {
