@@ -13,84 +13,107 @@ struct TranslatorView: View {
     @Binding var firestoreViewModel: FirestoreViewModel
     @Binding var translatorViewModel: TranslatorViewModel
     @State private var ttsViewModel = TTSViewModel()
-    //    @State private var translationSaved = false
     @FocusState var focus: Bool
     
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 20) {
                 VStack(alignment: .leading) {
-                    Text("Translate")
+                    Text("What would you like to translate?")
                     TextEditor(text: $translatorViewModel.textToTranslate)
                         .autocorrectionDisabled()
                         .focused($focus)
-                        .onChange(of: focus) {
-                            if focus {
-                                translatorViewModel.textToTranslate = ""
-                            }
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.clear)
+                                .stroke(.blue, lineWidth: 2 )
                         }
                 }
-                
-                Form {
-                    VStack(spacing: 20) {
-                        Picker("Select source language", selection: $translatorViewModel.sourceLanguage) {
-                            ForEach(TranslatorViewModel.allLanguages.sorted()) {
-                                Text($0.id)
-                                    .tag($0)
-                            }
-                        }
-                        .pickerStyle(.automatic)
-                        Picker("Select target language", selection: $translatorViewModel.targetLanguage) {
-                            ForEach(TranslatorViewModel.allLanguages.sorted()) {
-                                Text($0.id)
-                                    .tag($0)
-                            }
-                        }
-                        Section {
-                            Button("Translate") {
-                                translatorViewModel.checkForNewLines()
-                                Task {
-                                    firestoreViewModel.translationSaved = false
-                                    await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
-                                                                             source: translatorViewModel.sourceLanguage.sourceCode,
-                                                                             target: translatorViewModel.targetLanguage.targetCode)
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
-                        }
-                    }
-                }
-                .scrollDisabled(true)
-                .scrollContentBackground(.hidden)
                 
                 VStack(alignment: .leading) {
-                    HStack {
+                    HStack(spacing: 15) {
                         Text("Translation")
                         
                         Spacer()
                         
                         Button {
-                            firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
-                        } label: {
-                            Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
-                                .tint(firestoreViewModel.translationSaved ? .red : .primary)
-                        }
-                        .disabled(translatorViewModel.translation.isEmpty)
-                        .contentTransition(.symbolEffect(.replace))
-                        
-                        Button {
                             ttsViewModel.readTranslation(text: translatorViewModel.translation, language: translatorViewModel.targetLanguage.ttsCode)
                         } label: {
                             Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
-                                .foregroundStyle(.blue)
+                                .fontWeight(.medium)
+                                .tint(translatorViewModel.translation != "" ? .blue : .primary)
                                 .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
                         }
                         .contentTransition(.symbolEffect(.replace))
                         .disabled(translatorViewModel.translation.isEmpty)
+                        
+                        Button {
+                            firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
+                        } label: {
+                            Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
+                                .fontWeight(.medium)
+                                .tint(firestoreViewModel.translationSaved ? .red : .primary)
+                        }
+                        .disabled(translatorViewModel.translation.isEmpty)
+                        .contentTransition(.symbolEffect(.replace))
                     }
+                    
                     TextEditor(text: $translatorViewModel.translation)
                         .disabled(true)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.clear)
+                                .stroke(.blue, lineWidth: 2 )
+                        }
+                }
+                
+                VStack(spacing: 20){
+                    HStack(spacing: 20) {
+                        Picker("", selection: $translatorViewModel.sourceLanguage) {
+                            ForEach(TranslatorViewModel.allLanguages.sorted()) {
+                                Text($0.id)
+                                
+                                    .tag($0)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(5)
+                        .tint(.primary)
+                        .background(.secondary.opacity(0.3))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        
+                        
+                        
+                        Picker("", selection: $translatorViewModel.targetLanguage) {
+                            ForEach(TranslatorViewModel.allLanguages.sorted()) {
+                                Text($0.id)
+                                    .tag($0)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(5)
+                        .tint(.primary)
+                        .background(.secondary.opacity(0.3))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    .pickerStyle(.automatic)
+                    
+                    Button {
+                        translatorViewModel.checkForNewLines()
+                        Task {
+                            firestoreViewModel.translationSaved = false
+                            await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
+                                                                     source: translatorViewModel.sourceLanguage.sourceCode,
+                                                                     target: translatorViewModel.targetLanguage.targetCode)
+                        }
+                    } label: {
+                        Text("Translate")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .foregroundStyle(.background)
+                    .customButton(fillColor: .blue, borderWidth: 0)
                 }
             }
             .padding()
@@ -125,6 +148,6 @@ struct TranslatorView: View {
     }
 }
 
-//#Preview {
-//    TranslatorView()
-//}
+#Preview {
+    TranslatorView(firestoreViewModel: .constant(FirestoreViewModel()), translatorViewModel: .constant(TranslatorViewModel()))
+}

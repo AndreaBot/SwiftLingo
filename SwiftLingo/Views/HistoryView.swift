@@ -21,6 +21,7 @@ struct HistoryView: View {
             HStack {
                 Text("History")
                     .font(.title)
+                    .fontWeight(.semibold)
                     .fontDesign(.rounded)
                 DismissToolbar(dismissAction: dismiss)
             }
