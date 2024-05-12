@@ -47,7 +47,6 @@ struct MainAppView: View {
                     showingHistory = true
                 } label: {
                     Image(systemName: "clock.arrow.2.circlepath")
-                        .fontWeight(.medium)
                 }
                 Button {
                     if firestoreViewModel.currentUser != nil {
@@ -56,7 +55,6 @@ struct MainAppView: View {
                     viewModel.path.removeAll()
                 } label: {
                     Image(systemName: "rectangle.portrait.and.arrow.forward")
-                        .fontWeight(.medium)
                 }
             }
         }

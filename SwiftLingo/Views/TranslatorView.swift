@@ -68,7 +68,7 @@ struct TranslatorView: View {
                         }
                 }
                 
-                VStack(spacing: 20){
+                VStack(spacing: 20) {
                     HStack(spacing: 20) {
                         Picker("", selection: $translatorViewModel.sourceLanguage) {
                             ForEach(TranslatorViewModel.allLanguages.sorted()) {
@@ -84,7 +84,11 @@ struct TranslatorView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         
                         
-                        
+                        Button {
+                            translatorViewModel.swapLanguages()
+                        } label: {
+                            Image(systemName: "arrow.left.arrow.right")
+                        }
                         
                         Picker("", selection: $translatorViewModel.targetLanguage) {
                             ForEach(TranslatorViewModel.allLanguages.sorted()) {

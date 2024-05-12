@@ -18,8 +18,7 @@ struct DismissToolbar: View {
                 dismissAction()
             } label: {
                 Image(systemName: "xmark.circle")
-                    .font(.title)
-                    .fontWeight(.regular)
+                    .font(.title2)
             }
         }
     }

@@ -120,6 +120,12 @@ final class TranslatorViewModel {
         }
     }
     
+    func swapLanguages() {
+        let sourceLanguageCopy = sourceLanguage
+        sourceLanguage = targetLanguage
+        targetLanguage = sourceLanguageCopy
+    }
+    
     //MARK: - UserDefaults (HistoryView)
     
     var userDef = UserDefaults.standard
