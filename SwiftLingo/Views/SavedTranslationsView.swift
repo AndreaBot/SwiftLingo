@@ -34,9 +34,10 @@ struct SavedTranslationsView: View {
                             }
                         })
                         .listRowSeparator(.hidden)
-                        .listRowInsets(.init(top: 2.5, leading: 5, bottom: 2.5, trailing: 5))
-                        
+                        .listRowInsets(.init(top: 2.5, leading: 10, bottom: 2.5, trailing: 10))
                     }
+                    .padding(.top, 10)
+                    .clipped()
                     .listStyle(.plain)
                     .environment(\.defaultMinListRowHeight, 0)
                     .listRowSpacing(5)
@@ -46,7 +47,8 @@ struct SavedTranslationsView: View {
                         DetailView(savedTranslation: translation, deleteFromFirestore: {
                             await firestoreViewModel.deleteTranslation(documentName: String(translation.id))
                         }, showingFirebaseTranslations: true)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.large, .medium])
+                        
                     }
                     .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
                     } message: {

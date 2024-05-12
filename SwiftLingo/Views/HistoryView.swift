@@ -52,7 +52,7 @@ struct HistoryView: View {
                         }
                     }
                     .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 2.5, leading: 5, bottom: 2.5, trailing: 5))
+                    .listRowInsets(.init(top: 2.5, leading: 10, bottom: 2.5, trailing: 10))
                 }
                 .listStyle(.plain)
                 .environment(\.defaultMinListRowHeight, 0)
@@ -61,7 +61,7 @@ struct HistoryView: View {
                     DetailView(savedTranslation: translation, deleteFromUserDefaults: {
                         translatorViewModel.deleteHistoryUserDefaultValue(translation: translation)
                     }, showingFirebaseTranslations: false)
-                    .presentationDetents([.medium])
+                    .presentationDetents([.large, .medium])
                 }
             } else {
                 ContentUnavailableView("Oops, nothing to see here...", systemImage: "ellipsis", description: Text("Your 10 most recent translations will automatically appear here."))

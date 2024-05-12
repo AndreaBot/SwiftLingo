@@ -22,18 +22,26 @@ struct DetailView: View {
     
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             DismissToolbar(dismissAction: dismiss)
             
             VStack {
-                Text(savedTranslation.sourceLanguage.flag + savedTranslation.sourceLanguage.id)
+                Text("\(savedTranslation.sourceLanguage.flag) \(savedTranslation.sourceLanguage.id)")
+                    .fontWeight(.semibold)
+                Divider()
+                    .background(.blue)
+                    .frame(height: 10)
                 Text(savedTranslation.textToTranslate)
             }
             
             Spacer()
             
             VStack {
-                Text(savedTranslation.targetLanguage.flag + savedTranslation.targetLanguage.id)
+                Text("\(savedTranslation.targetLanguage.flag) \(savedTranslation.targetLanguage.id)")
+                    .fontWeight(.semibold)
+                Divider()
+                    .background(.blue)
+                    .frame(height: 10)
                 Text(savedTranslation.translation)
             }
             
@@ -44,7 +52,11 @@ struct DetailView: View {
                     ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode)
                 } label: {
                     Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
-                        .foregroundStyle(.blue)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.background)
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                         .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
                 }
                 .contentTransition(.symbolEffect(.replace))
@@ -65,21 +77,23 @@ struct DetailView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "trash.fill")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.background)
+                        .background(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
         }
         .padding()
-        .containerRelativeFrame(.horizontal) { size, axis in
-            size
-        }
         .background(.thickMaterial)
     }
 }
 
-//#Preview {
-//    let sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
-//    let targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
-//    let saved = TranslationModel(id: 0.2, sourceLanguage: sourceLanguage, targetLanguage: targetLanguage, textToTranslate: "Coffee", translation: "Caffe'")
-//
-//    return DetailView(savedTranslation: saved)
-//}
+#Preview {
+    let sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
+    let targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
+    let saved = TranslationModel(id: 0.2, sourceLanguage: sourceLanguage, targetLanguage: targetLanguage, textToTranslate: "Coffee", translation: "Caffe'")
+    
+    return DetailView(savedTranslation: saved, showingFirebaseTranslations: false)
+}
