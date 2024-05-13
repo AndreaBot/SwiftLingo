@@ -60,11 +60,24 @@ final class FirebaseAuthViewModel {
     func logoutUser() {
         do {
             try Auth.auth().signOut()
+            path.removeAll()
         } catch let e as NSError {
             self.alertMessage = e.localizedDescription
             self.showingAlert = true
         }
     }
+    
+    func deleteAccount() {
+        if let user = Auth.auth().currentUser {
+            user.delete { error in
+                if let error = error {
+                    self.alertMessage = error.localizedDescription
+                    self.showingAlert = true
+                }
+            }
+        }
+    }
+    
     
     func resetFields() {
         email = ""

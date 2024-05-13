@@ -16,6 +16,7 @@ struct MainAppView: View {
     @State private var firestoreViewModel = FirestoreViewModel()
     
     @State private var showingHistory = false
+    @State private var showingMenu = false
     
     @State private var selectedTab = 0
     @State private var screenTitles = ["Translator", "My Translations"]
@@ -50,20 +51,25 @@ struct MainAppView: View {
                 }
                 Button {
                     if firestoreViewModel.currentUser != nil {
-                        viewModel.logoutUser()
+                        showingMenu = true
+                    } else {
+                        viewModel.path.removeAll()
                     }
-                    viewModel.path.removeAll()
+    
                 } label: {
-                    Image(systemName: "rectangle.portrait.and.arrow.forward")
+                    Image(systemName: firestoreViewModel.currentUser != nil ? "ellipsis" : "rectangle.portrait.and.arrow.forward")
                 }
             }
         }
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)
         }
-        .fullScreenCover(isPresented: $showingHistory, content: {
+        .fullScreenCover(isPresented: $showingHistory) {
             HistoryView(translatorViewModel: $translatorViewModel, firestoreViewModel: $firestoreViewModel)
-        })
+        }
+        .sheet(isPresented: $showingMenu) {
+            MenuView(authViewModel: $viewModel)
+        }
         .onAppear {
             translatorViewModel.loadHistoryUserDefaults()
         }

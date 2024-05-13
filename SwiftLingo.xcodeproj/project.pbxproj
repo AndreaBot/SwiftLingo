@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		621B11BB2BF29ECE000088B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BA2BF29ECE000088B9 /* MenuView.swift */; };
 		621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */; };
 		621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */; };
 		621EFE052BE41DB6004F44B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621EFE042BE41DB6004F44B5 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		292F56B0506172994EFFE251 /* Pods-SwiftLingo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.release.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.release.xcconfig"; sourceTree = "<group>"; };
+		621B11BA2BF29ECE000088B9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		621EFDFD2BE41DB4004F44B5 /* SwiftLingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoApp.swift; sourceTree = "<group>"; };
 		621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				62EDE4E72BEAD1D2000BE168 /* HistoryView.swift */,
 				62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */,
 				62EDE4DD2BE8E175000BE168 /* DetailView.swift */,
+				621B11BA2BF29ECE000088B9 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				621EFE152BE425B8004F44B5 /* MainAppView.swift in Sources */,
 				624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */,
 				624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */,
+				621B11BB2BF29ECE000088B9 /* MenuView.swift in Sources */,
 				624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */,
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,
 				62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */,
