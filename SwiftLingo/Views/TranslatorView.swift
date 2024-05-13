@@ -131,10 +131,10 @@ struct TranslatorView: View {
                     }
                 }
             }
-            .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
-            } message: {
-                Text(firestoreViewModel.alertMessage)
-            }
+        }
+        .alert("Error", isPresented: $firestoreViewModel.showingAlert) {
+        } message: {
+            Text(firestoreViewModel.alertMessage)
         }
         .onAppear {
             translatorViewModel.loadDefaultLanguages()

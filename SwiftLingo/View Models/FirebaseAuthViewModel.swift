@@ -18,8 +18,10 @@ final class FirebaseAuthViewModel {
     var password = ""
     var passwordConfirmation = ""
     
+    var alertTitle = ""
     var alertMessage = ""
     var showingAlert = false
+    var showingConfirmationAlert = false
     
     func checkCurrentUser() {
         if Auth.auth().currentUser == nil {
@@ -67,17 +69,42 @@ final class FirebaseAuthViewModel {
         }
     }
     
+    func deleteAccountChecking() {
+        alertTitle = "Hold on a sec..."
+        alertMessage = "Do you wish to delete your account? This action cannot be undone!"
+        showingConfirmationAlert = true
+    }
+    
     func deleteAccount() {
         if let user = Auth.auth().currentUser {
             user.delete { error in
                 if let error = error {
+                    self.alertTitle = "Error"
                     self.alertMessage = error.localizedDescription
                     self.showingAlert = true
+                } else {
+                    self.path.removeAll()
                 }
             }
         }
     }
     
+    func reAuthenticate(password: String, confirmationFunc: @escaping () -> Void) {
+        if let user = Auth.auth().currentUser {
+            let credential = EmailAuthProvider.credential(withEmail: user.email! , password: password)
+            user.reauthenticate(with: credential) { _ , error in
+                if let error = error {
+                    print(error)
+                    self.alertTitle = "Error"
+                    self.alertMessage = error.localizedDescription
+                    self.showingConfirmationAlert = true
+                    self.password = ""
+                } else {
+                    confirmationFunc()
+                }
+            }
+        }
+    }
     
     func resetFields() {
         email = ""
@@ -85,3 +112,4 @@ final class FirebaseAuthViewModel {
         passwordConfirmation = ""
     }
 }
+

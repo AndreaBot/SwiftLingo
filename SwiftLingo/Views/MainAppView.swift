@@ -61,9 +61,6 @@ struct MainAppView: View {
                 }
             }
         }
-        .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
-            Text(viewModel.alertMessage)
-        }
         .fullScreenCover(isPresented: $showingHistory) {
             HistoryView(translatorViewModel: $translatorViewModel, firestoreViewModel: $firestoreViewModel)
         }
@@ -72,6 +69,7 @@ struct MainAppView: View {
         }
         .onAppear {
             translatorViewModel.loadHistoryUserDefaults()
+            viewModel.resetFields()
         }
     }
 }

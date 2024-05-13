@@ -19,10 +19,25 @@ struct MenuView: View {
                 Button("Logout", action: authViewModel.logoutUser)
                     .frame(maxWidth: .infinity)
                     .customButton(fillColor: .clear, borderWidth: 3)
+                
+                Button("Delete account", action: authViewModel.deleteAccountChecking)
+                    .frame(maxWidth: .infinity)
+                    .customButton(fillColor: .clear, borderWidth: 3)
             }
             .scrollContentBackground(.hidden)
         }
         .padding()
+        .alert(authViewModel.alertTitle, isPresented: $authViewModel.showingConfirmationAlert) {
+            TextField("", text: $authViewModel.password, prompt: Text("Confirm your password"))
+            Button("Delete account") {
+                authViewModel.reAuthenticate(password: authViewModel.password, confirmationFunc: authViewModel.deleteAccount)
+            }
+            .disabled(authViewModel.password == "")
+            Button("Cancel") {}
+            
+        } message: {
+            Text(authViewModel.alertMessage)
+        }
     }
 }
 
