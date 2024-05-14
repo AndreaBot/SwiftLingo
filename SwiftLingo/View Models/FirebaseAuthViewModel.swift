@@ -25,6 +25,7 @@ final class FirebaseAuthViewModel {
     var showingConfirmationAlert = false
     var showingPasswordResetAlert = false
     var showingReauthenticationError = false
+    var showingSendLinkAlert = false
     
     func checkCurrentUser() {
         if Auth.auth().currentUser == nil {
@@ -115,6 +116,14 @@ final class FirebaseAuthViewModel {
                 } else {
                     confirmationFunc()
                 }
+            }
+        }
+    }
+    
+    func sendPasswordResetEmail() {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
     }

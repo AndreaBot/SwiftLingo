@@ -30,6 +30,12 @@ struct LoginView: View {
                     .keyboardType(.emailAddress)
                     .focused($focus)
                 PasswordTextField(password: $viewModel.password, focus: $focus, prompt: "Enter your password")
+                Button {
+                    viewModel.showingSendLinkAlert = true
+                } label: {
+                    Text("Forgot password?")
+                        .underline()
+                }
             }
             .padding()
             .background(.thickMaterial)
@@ -53,6 +59,12 @@ struct LoginView: View {
         .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
             Text(viewModel.alertMessage)
         }
+        .alert("Password reset", isPresented: $viewModel.showingSendLinkAlert) {
+            TextField("Email", text: $viewModel.email, prompt: Text("Enter your email"))
+            Button("Send password reset link") {
+                viewModel.sendPasswordResetEmail()
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .keyboard) {
                 HStack {
@@ -66,6 +78,7 @@ struct LoginView: View {
     }
 }
 
-//#Preview {
-//    LoginView(path: .constant([.loginOptions, .loginView]))
-//}
+#Preview {
+    @FocusState var focus: Bool
+    return LoginView(viewModel: .constant(FirebaseAuthViewModel()), focus: _focus)
+}
