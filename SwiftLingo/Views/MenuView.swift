@@ -11,7 +11,7 @@ struct MenuView: View {
     
     @Environment(\.dismiss) var dismiss
     @Binding var authViewModel: FirebaseAuthViewModel
-    @FocusState var focus: Bool
+    
     
     var body: some View {
         VStack {
@@ -37,25 +37,23 @@ struct MenuView: View {
             Button("Delete account") {
                 authViewModel.reAuthenticate(password: authViewModel.password, confirmationFunc: authViewModel.deleteAccount)
             }
-            .disabled(authViewModel.password == "")
+            .disabled(authViewModel.password.isEmpty)
             Button("Cancel") {}
         } message: {
             Text(authViewModel.alertMessage)
         }
         .alert("Password reset", isPresented: $authViewModel.showingPasswordResetAlert) {
-            PasswordTextField(password: $authViewModel.password, focus: $focus, prompt: "Confirm your current password")
-            PasswordTextField(password: $authViewModel.newPassword, focus: $focus, prompt: "Enter your new password")
-            
+            SecureField("Currect password", text: $authViewModel.password, prompt: Text("Confirm your current password"))
+            SecureField("Currect password", text: $authViewModel.newPassword, prompt: Text("Enter your new password"))
             Button("Reset password") {
                 authViewModel.reAuthenticate(password: authViewModel.password, confirmationFunc: authViewModel.resetPassword)
             }
-            .disabled(authViewModel.password == "")
+            .disabled(authViewModel.password.isEmpty || authViewModel.newPassword.isEmpty)
             Button("Cancel") {}
         } message: {
             Text("Confrim your current password and type the new one to proceed")
         }
         .alert("Error", isPresented: $authViewModel.showingReauthenticationError) {
-            
         } message: {
             Text("We couldn't prove you identity with the credentials provided. Please double check them and try again")
         }
