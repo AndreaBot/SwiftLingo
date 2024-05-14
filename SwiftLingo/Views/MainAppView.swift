@@ -66,6 +66,7 @@ struct MainAppView: View {
         }
         .sheet(isPresented: $showingMenu) {
             MenuView(authViewModel: $viewModel)
+                .presentationDetents([.fraction(0.33)])
         }
         .onAppear {
             translatorViewModel.loadHistoryUserDefaults()

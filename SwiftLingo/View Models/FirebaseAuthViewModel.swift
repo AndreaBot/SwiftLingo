@@ -17,11 +17,14 @@ final class FirebaseAuthViewModel {
     var email = ""
     var password = ""
     var passwordConfirmation = ""
+    var newPassword = ""
     
     var alertTitle = ""
     var alertMessage = ""
     var showingAlert = false
     var showingConfirmationAlert = false
+    var showingPasswordResetAlert = false
+    var showingReauthenticationError = false
     
     func checkCurrentUser() {
         if Auth.auth().currentUser == nil {
@@ -81,9 +84,21 @@ final class FirebaseAuthViewModel {
                 if let error = error {
                     self.alertTitle = "Error"
                     self.alertMessage = error.localizedDescription
-                    self.showingAlert = true
+                    self.showingConfirmationAlert = true
                 } else {
                     self.path.removeAll()
+                }
+            }
+        }
+    }
+    
+    func resetPassword() {
+        if let user = Auth.auth().currentUser {
+            user.updatePassword(to: newPassword) { error in
+                if let error = error {
+                    self.alertTitle = "Error"
+                    self.alertMessage = error.localizedDescription
+                    self.showingPasswordResetAlert = true
                 }
             }
         }
@@ -95,9 +110,7 @@ final class FirebaseAuthViewModel {
             user.reauthenticate(with: credential) { _ , error in
                 if let error = error {
                     print(error)
-                    self.alertTitle = "Error"
-                    self.alertMessage = error.localizedDescription
-                    self.showingConfirmationAlert = true
+                    self.showingReauthenticationError = true
                     self.password = ""
                 } else {
                     confirmationFunc()
@@ -110,6 +123,7 @@ final class FirebaseAuthViewModel {
         email = ""
         password = ""
         passwordConfirmation = ""
+        newPassword = ""
     }
 }
 
