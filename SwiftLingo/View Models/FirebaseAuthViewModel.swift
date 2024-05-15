@@ -19,13 +19,11 @@ final class FirebaseAuthViewModel {
     var passwordConfirmation = ""
     var newPassword = ""
     
-    var alertTitle = ""
     var alertMessage = ""
-    var showingAlert = false
-    var showingConfirmationAlert = false
+    var showingAccountDeletionAlert = false
     var showingPasswordResetAlert = false
-    var showingReauthenticationError = false
     var showingSendLinkAlert = false
+    var showingErrorAlert = false
     
     func checkCurrentUser() {
         if Auth.auth().currentUser == nil {
@@ -38,14 +36,14 @@ final class FirebaseAuthViewModel {
     func registerUser() {
         guard passwordConfirmation == password else {
             alertMessage = "The passwords do not match."
-            showingAlert = true
+            showingErrorAlert = true
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let e = error {
                 self.alertMessage = e.localizedDescription
-                self.showingAlert = true
+                self.showingErrorAlert = true
             } else {
                 self.path.append(.mainAppView)
             }
@@ -56,7 +54,7 @@ final class FirebaseAuthViewModel {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let e = error {
                 self.alertMessage = e.localizedDescription
-                self.showingAlert = true
+                self.showingErrorAlert = true
             } else {
                 self.path.append(.mainAppView)
             }
@@ -69,23 +67,21 @@ final class FirebaseAuthViewModel {
             path.removeAll()
         } catch let e as NSError {
             self.alertMessage = e.localizedDescription
-            self.showingAlert = true
+            self.showingErrorAlert = true
         }
     }
     
     func deleteAccountChecking() {
-        alertTitle = "Hold on a sec..."
         alertMessage = "Do you wish to delete your account? This action cannot be undone!"
-        showingConfirmationAlert = true
+        showingAccountDeletionAlert = true
     }
     
     func deleteAccount() {
         if let user = Auth.auth().currentUser {
             user.delete { error in
                 if let error = error {
-                    self.alertTitle = "Error"
                     self.alertMessage = error.localizedDescription
-                    self.showingConfirmationAlert = true
+                    self.showingErrorAlert = true
                 } else {
                     self.path.removeAll()
                 }
@@ -93,13 +89,17 @@ final class FirebaseAuthViewModel {
         }
     }
     
+    func resetPasswordChecking() {
+        alertMessage = "Confirm your current password and type the new one to proceed"
+        showingPasswordResetAlert = true
+    }
+    
     func resetPassword() {
         if let user = Auth.auth().currentUser {
             user.updatePassword(to: newPassword) { error in
                 if let error = error {
-                    self.alertTitle = "Error"
                     self.alertMessage = error.localizedDescription
-                    self.showingPasswordResetAlert = true
+                    self.showingErrorAlert = true
                 }
             }
         }
@@ -111,8 +111,10 @@ final class FirebaseAuthViewModel {
             user.reauthenticate(with: credential) { _ , error in
                 if let error = error {
                     print(error)
-                    self.showingReauthenticationError = true
+                    self.alertMessage = "We couldn't prove you identity with the credentials provided. Please double check them and try again"
+                    self.showingErrorAlert = true
                     self.password = ""
+                    self.newPassword = ""
                 } else {
                     confirmationFunc()
                 }
@@ -124,6 +126,8 @@ final class FirebaseAuthViewModel {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 print(error.localizedDescription)
+                self.alertMessage = error.localizedDescription
+                self.showingErrorAlert = true
             }
         }
     }

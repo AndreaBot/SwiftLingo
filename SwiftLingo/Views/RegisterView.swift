@@ -60,7 +60,7 @@ struct RegisterView: View {
         .onAppear {
             viewModel.resetFields()
         }
-        .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
+        .alert("Error", isPresented: $viewModel.showingErrorAlert) {} message: {
             Text(viewModel.alertMessage)
         }
         .toolbar {

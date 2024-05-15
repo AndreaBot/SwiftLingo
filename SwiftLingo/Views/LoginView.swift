@@ -36,6 +36,14 @@ struct LoginView: View {
                     Text("Forgot password?")
                         .underline()
                 }
+                .alert("Password reset", isPresented: $viewModel.showingSendLinkAlert) {
+                    TextField("Email", text: $viewModel.email, prompt: Text("Enter your email"))
+                    Button("Send password reset link") {
+                        viewModel.sendPasswordResetEmail()
+                    }
+                    .disabled(viewModel.email.isEmpty)
+                    Button("Cancel") {}
+                }
             }
             .padding()
             .background(.thickMaterial)
@@ -56,14 +64,8 @@ struct LoginView: View {
         .onAppear {
             viewModel.resetFields()
         }
-        .alert("Error", isPresented: $viewModel.showingAlert) {} message: {
+        .alert("Error", isPresented: $viewModel.showingErrorAlert) {} message: {
             Text(viewModel.alertMessage)
-        }
-        .alert("Password reset", isPresented: $viewModel.showingSendLinkAlert) {
-            TextField("Email", text: $viewModel.email, prompt: Text("Enter your email"))
-            Button("Send password reset link") {
-                viewModel.sendPasswordResetEmail()
-            }
         }
         .toolbar {
             ToolbarItem(placement: .keyboard) {
