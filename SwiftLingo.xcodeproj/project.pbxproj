@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		621B11BB2BF29ECE000088B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BA2BF29ECE000088B9 /* MenuView.swift */; };
 		621B11BD2BF6945D000088B9 /* FirebaseAuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BC2BF6945D000088B9 /* FirebaseAuthErrors.swift */; };
+		621B11BF2BF6AD4B000088B9 /* FirestoreErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */; };
 		621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */; };
 		621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */; };
 		621EFE052BE41DB6004F44B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621EFE042BE41DB6004F44B5 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		292F56B0506172994EFFE251 /* Pods-SwiftLingo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLingo.release.xcconfig"; path = "Target Support Files/Pods-SwiftLingo/Pods-SwiftLingo.release.xcconfig"; sourceTree = "<group>"; };
 		621B11BA2BF29ECE000088B9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		621B11BC2BF6945D000088B9 /* FirebaseAuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthErrors.swift; sourceTree = "<group>"; };
+		621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreErrors.swift; sourceTree = "<group>"; };
 		621EFDFD2BE41DB4004F44B5 /* SwiftLingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoApp.swift; sourceTree = "<group>"; };
 		621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				621B11BC2BF6945D000088B9 /* FirebaseAuthErrors.swift */,
+				621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */,
 				62EDE4E12BE96CF0000BE168 /* FirebaseAuthViewModel.swift */,
 				624CDFF22BE56C5900ACEED2 /* TranslatorViewModel.swift */,
 				62EDE4DB2BE8DB65000BE168 /* FirestoreViewModel.swift */,
@@ -322,6 +325,7 @@
 				62EDE4EA2BEAF47F000BE168 /* DismissToolbar.swift in Sources */,
 				621EFE152BE425B8004F44B5 /* MainAppView.swift in Sources */,
 				624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */,
+				621B11BF2BF6AD4B000088B9 /* FirestoreErrors.swift in Sources */,
 				624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */,
 				621B11BB2BF29ECE000088B9 /* MenuView.swift in Sources */,
 				624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */,

@@ -25,13 +25,15 @@ final class FirestoreViewModel {
         if let currentUser = currentUser {
             database.collection(currentUser.uid)
                 .order(by: "date", descending: true)
-                .getDocuments { [self] (querySnapshot, error) in
+                .getDocuments { (querySnapshot, error) in
                     
-                    savedTranslations = []
+                    self.savedTranslations = []
                     
-                    if let e = error {
-                        self.alertMessage = e.localizedDescription
-                        self.showingAlert = true
+                    if let error = error as NSError? {
+                        if let code = FirestoreErrorCode.Code(rawValue: error.code) {
+                            self.alertMessage = FirestoreErrors.presentError(using: code)
+                            self.showingAlert = true
+                        }
                     } else {
                         if let snapshotDocuments = querySnapshot?.documents {
                             for doc in snapshotDocuments {
@@ -51,7 +53,7 @@ final class FirestoreViewModel {
                                         
                                         let fetchedTranslation = TranslationModel(id: date, sourceLanguage: TranslatorViewModel.allLanguages[sourceLangIndex], targetLanguage: TranslatorViewModel.allLanguages[targetLangIndex], textToTranslate: textToTranslate, translation: translation)
                                         
-                                        savedTranslations.append(fetchedTranslation)
+                                        self.savedTranslations.append(fetchedTranslation)
                                     }
                                 }
                             }
@@ -66,7 +68,7 @@ final class FirestoreViewModel {
             alertMessage = "You must be logged in as a user to save translations."
             showingAlert = true
             return
-            }
+        }
         
         if let currentUser = currentUser {
             let date = Date().timeIntervalSince1970
@@ -77,9 +79,11 @@ final class FirestoreViewModel {
                 "translation": translation,
                 "date": date
             ]) { error in
-                if let e = error {
-                    self.alertMessage = e.localizedDescription
-                    self.showingAlert = true
+                if let error = error as NSError? {
+                    if let code = FirestoreErrorCode.Code(rawValue: error.code) {
+                        self.alertMessage = FirestoreErrors.presentError(using: code)
+                        self.showingAlert = true
+                    }
                 } else {
                     self.translationSaved = true
                 }
@@ -92,8 +96,12 @@ final class FirestoreViewModel {
             do {
                 try await database.collection(currentUser.uid).document(documentName).delete()
             } catch {
-                self.alertMessage = error.localizedDescription
-                self.showingAlert = true
+                if let error = error as NSError? {
+                    if let code = FirestoreErrorCode.Code(rawValue: error.code) {
+                        self.alertMessage = FirestoreErrors.presentError(using: code)
+                        self.showingAlert = true
+                    }
+                }
             }
         }
     }
