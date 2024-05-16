@@ -52,7 +52,7 @@ struct MenuView: View {
                 }
         }
         .padding()
-        .alert("Error", isPresented: $authViewModel.showingErrorAlert) {
+        .alert("Error", isPresented: $authViewModel.showingMenuErrorAlert) {
         } message: {
             Text(authViewModel.alertMessage)
         }

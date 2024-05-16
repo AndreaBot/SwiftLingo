@@ -24,6 +24,7 @@ final class FirebaseAuthViewModel {
     var showingPasswordResetAlert = false
     var showingSendLinkAlert = false
     var showingErrorAlert = false
+    var showingMenuErrorAlert = false
     
     func checkCurrentUser() {
         if Auth.auth().currentUser == nil {
@@ -41,9 +42,11 @@ final class FirebaseAuthViewModel {
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let e = error {
-                self.alertMessage = e.localizedDescription
-                self.showingErrorAlert = true
+            if let error = error as NSError? {
+                if let code = AuthErrorCode.Code(rawValue: error.code) {
+                    self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                    self.showingErrorAlert = true
+                }
             } else {
                 self.path.append(.mainAppView)
             }
@@ -52,9 +55,11 @@ final class FirebaseAuthViewModel {
     
     func loginUser() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let e = error {
-                self.alertMessage = e.localizedDescription
-                self.showingErrorAlert = true
+            if let error = error as NSError? {
+                if let code = AuthErrorCode.Code(rawValue: error.code) {
+                    self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                    self.showingErrorAlert = true
+                }
             } else {
                 self.path.append(.mainAppView)
             }
@@ -65,9 +70,13 @@ final class FirebaseAuthViewModel {
         do {
             try Auth.auth().signOut()
             path.removeAll()
-        } catch let e as NSError {
-            self.alertMessage = e.localizedDescription
-            self.showingErrorAlert = true
+        } catch {
+            if let error = error as NSError? {
+                if let code = AuthErrorCode.Code(rawValue: error.code) {
+                    self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                    self.showingMenuErrorAlert = true
+                }
+            }
         }
     }
     
@@ -79,9 +88,12 @@ final class FirebaseAuthViewModel {
     func deleteAccount() {
         if let user = Auth.auth().currentUser {
             user.delete { error in
-                if let error = error {
-                    self.alertMessage = error.localizedDescription
-                    self.showingErrorAlert = true
+                if let error = error as NSError? {
+                    if let code = AuthErrorCode.Code(rawValue: error.code) {
+                        self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                        self.showingMenuErrorAlert = true
+                        self.resetFields()
+                    }
                 } else {
                     self.path.removeAll()
                 }
@@ -97,9 +109,12 @@ final class FirebaseAuthViewModel {
     func resetPassword() {
         if let user = Auth.auth().currentUser {
             user.updatePassword(to: newPassword) { error in
-                if let error = error {
-                    self.alertMessage = error.localizedDescription
-                    self.showingErrorAlert = true
+                if let error = error as NSError? {
+                    if let code = AuthErrorCode.Code(rawValue: error.code) {
+                        self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                        self.showingMenuErrorAlert = true
+                        self.resetFields()
+                    }
                 }
             }
         }
@@ -109,12 +124,12 @@ final class FirebaseAuthViewModel {
         if let user = Auth.auth().currentUser {
             let credential = EmailAuthProvider.credential(withEmail: user.email! , password: password)
             user.reauthenticate(with: credential) { _ , error in
-                if let error = error {
-                    print(error)
-                    self.alertMessage = "We couldn't prove you identity with the credentials provided. Please double check them and try again"
-                    self.showingErrorAlert = true
-                    self.password = ""
-                    self.newPassword = ""
+                if let error = error as NSError? {
+                    if let code = AuthErrorCode.Code(rawValue: error.code) {
+                        self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                        self.showingMenuErrorAlert = true
+                        self.resetFields()
+                    }
                 } else {
                     confirmationFunc()
                 }
@@ -124,10 +139,11 @@ final class FirebaseAuthViewModel {
     
     func sendPasswordResetEmail() {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if let error = error {
-                print(error.localizedDescription)
-                self.alertMessage = error.localizedDescription
-                self.showingErrorAlert = true
+            if let error = error as NSError? {
+                if let code = AuthErrorCode.Code(rawValue: error.code) {
+                    self.alertMessage = FirebaseAuthErrors.presentError(using: code)
+                    self.showingErrorAlert = true
+                }
             }
         }
     }

@@ -55,7 +55,7 @@ struct MainAppView: View {
                     } else {
                         viewModel.path.removeAll()
                     }
-    
+                    
                 } label: {
                     Image(systemName: firestoreViewModel.currentUser != nil ? "ellipsis" : "rectangle.portrait.and.arrow.forward")
                 }
