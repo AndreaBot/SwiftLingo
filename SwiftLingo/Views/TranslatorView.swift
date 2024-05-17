@@ -60,7 +60,9 @@ struct TranslatorView: View {
                             .disabled(translatorViewModel.translation.isEmpty)
                             
                             Button {
-                                firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
+                                Task {
+                                  await  firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
+                                }
                             } label: {
                                 Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
                                     .fontWeight(.medium)

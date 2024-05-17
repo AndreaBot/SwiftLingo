@@ -17,6 +17,7 @@ struct HistoryView: View {
     @State private var symbolIsAnimated = false
     
     var body: some View {
+        ZStack {
         VStack {
             HStack {
                 Text("History")
@@ -36,7 +37,9 @@ struct HistoryView: View {
                         .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
                             if let _ = firestoreViewModel.currentUser {
                                 Button {
-                                    firestoreViewModel.saveTranslation(sourceLanguage: translation.sourceLanguage.id, textToTranslate: translation.textToTranslate, targetLanguage: translation.targetLanguage.id, translation: translation.translation)
+                                    Task {
+                                        await firestoreViewModel.saveTranslation(sourceLanguage: translation.sourceLanguage.id, textToTranslate: translation.textToTranslate, targetLanguage: translation.targetLanguage.id, translation: translation.translation)
+                                    }
                                 } label: {
                                     Image(systemName: "heart")
                                 }
@@ -72,6 +75,12 @@ struct HistoryView: View {
             }
         }
         .padding()
+            
+            if firestoreViewModel.showingConfirmationMessage {
+                ConfirmationMessageView(message: "Translation saved successfully!")
+                    .transition(.opacity)
+            }
+    }
     }
 }
 

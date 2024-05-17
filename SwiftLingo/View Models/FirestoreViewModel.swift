@@ -64,7 +64,7 @@ final class FirestoreViewModel {
         }
     }
     
-    func saveTranslation(sourceLanguage: String, textToTranslate: String, targetLanguage: String, translation: String) {
+    func saveTranslation(sourceLanguage: String, textToTranslate: String, targetLanguage: String, translation: String) async {
         guard currentUser != nil  else {
             alertMessage = "You must be logged in as a user to save translations."
             showingAlert = true
@@ -73,22 +73,24 @@ final class FirestoreViewModel {
         
         if let currentUser = currentUser {
             let date = Date().timeIntervalSince1970
-            database.collection(currentUser.uid).document(String(date)).setData([
-                "sourceLanguage": sourceLanguage,
-                "textToTranslate": textToTranslate,
-                "targetLanguage" : targetLanguage,
-                "translation": translation,
-                "date": date
-            ]) { error in
+            do {
+                try await database.collection(currentUser.uid).document(String(date)).setData([
+                    "sourceLanguage": sourceLanguage,
+                    "textToTranslate": textToTranslate,
+                    "targetLanguage" : targetLanguage,
+                    "translation": translation,
+                    "date": date
+                ])
+                self.translationSaved = true
+                self.showAndHideMessage()
+                
+                
+            } catch {
                 if let error = error as NSError? {
                     if let code = FirestoreErrorCode.Code(rawValue: error.code) {
                         self.alertMessage = FirestoreErrors.presentError(using: code)
                         self.showingAlert = true
                     }
-                } else {
-                    self.translationSaved = true
-                        self.showAndHideMessage()
-                
                 }
             }
         }
@@ -116,7 +118,7 @@ final class FirestoreViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             withAnimation(.smooth(duration: 0.6)) {
                 self.showingConfirmationMessage = false
-           }
+            }
         }
     }
 }
