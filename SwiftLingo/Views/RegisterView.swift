@@ -33,13 +33,13 @@ struct RegisterView: View {
                     .focused($focus)
                 
                 VStack(alignment: .leading) {
-                    PasswordTextField(password: $viewModel.password, focus: $focus, prompt: "Enter your password")
+                    PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
                     
                     if !viewModel.password.isEmpty {
                         PasswordRating(password: $viewModel.password)
                     }
                 }
-                PasswordTextField(password: $viewModel.passwordConfirmation, focus: $focus, prompt: "Confirm your password")
+                PasswordTextField(password: $viewModel.passwordConfirmation, prompt: "Confirm your password")
             }
             .padding()
             .background(.thickMaterial)
@@ -59,6 +59,7 @@ struct RegisterView: View {
         .padding()
         .onAppear {
             viewModel.resetFields()
+            focus = true
         }
         .alert("Error", isPresented: $viewModel.showingErrorAlert) {} message: {
             Text(viewModel.alertMessage)
