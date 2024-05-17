@@ -42,7 +42,7 @@ struct TranslatorView: View {
                         } label: {
                             Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
                                 .fontWeight(.medium)
-                                .tint(translatorViewModel.translation != "" ? .blue : .primary)
+                                .tint(translatorViewModel.translation.isEmpty ? .primary : .blue)
                                 .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
                         }
                         .contentTransition(.symbolEffect(.replace))
@@ -52,13 +52,11 @@ struct TranslatorView: View {
                             ttsViewModel.readTranslation(text: translatorViewModel.translation, language: translatorViewModel.targetLanguage.ttsCode, speed: 0.1)
                         } label: {
                             Image(systemName: "tortoise.fill")
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .foregroundStyle(.background)
-                                .background(.green)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .fontWeight(.medium)
+                                .tint(translatorViewModel.translation.isEmpty ? .primary : .green)
                                 .symbolEffect(.pulse.wholeSymbol, options: ttsViewModel.isSpeakingSlow ? .repeating : .default, value: ttsViewModel.isSpeakingSlow)
                         }
+                        .disabled(translatorViewModel.translation.isEmpty)
                         
                         Button {
                             firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)

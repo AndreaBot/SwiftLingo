@@ -17,7 +17,10 @@ struct MenuView: View {
         VStack {
             DismissToolbar(dismissAction: dismiss)
             Spacer()
-            Button("Logout", action: authViewModel.logoutUser)
+            Button("Logout") {
+                dismiss()
+                authViewModel.logoutUser()
+            }
                 .frame(maxWidth: .infinity)
                 .customButton(fillColor: .clear, borderWidth: 3)
             
