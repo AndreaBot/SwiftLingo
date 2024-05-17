@@ -49,7 +49,19 @@ struct DetailView: View {
             
             HStack {
                 Button {
-                    ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode)
+                    ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode, speed: 0.1)
+                } label: {
+                    Image(systemName: "tortoise.fill")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.background)
+                        .background(.green)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .symbolEffect(.pulse.wholeSymbol, options: ttsViewModel.isSpeakingSlow ? .repeating : .default, value: ttsViewModel.isSpeakingSlow)
+                }
+                
+                Button {
+                    ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode, speed: 0.5)
                 } label: {
                     Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
                         .padding()
@@ -57,7 +69,7 @@ struct DetailView: View {
                         .foregroundStyle(.background)
                         .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
+                        .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .default, value: ttsViewModel.isSpeaking)
                 }
                 .contentTransition(.symbolEffect(.replace))
                 

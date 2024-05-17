@@ -18,17 +18,24 @@ final class TTSViewModel: NSObject, AVSpeechSynthesizerDelegate {
     
     let synth = AVSpeechSynthesizer()
     var isSpeaking = false
+    var isSpeakingSlow = false
     
-    func readTranslation(text: String, language: String) {
+    
+    func readTranslation(text: String, language: String, speed: Float) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: language)
-        utterance.rate = 0.4
+        utterance.rate = speed
         utterance.pitchMultiplier = 1.2
-        isSpeaking = true
+        if speed == 0.5 {
+            isSpeaking = true
+        } else {
+            isSpeakingSlow = true
+        }
         synth.speak(utterance)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         isSpeaking = false
+        isSpeakingSlow = false
     }
 }
