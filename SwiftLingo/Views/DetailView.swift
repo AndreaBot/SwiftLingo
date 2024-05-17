@@ -52,11 +52,7 @@ struct DetailView: View {
                     ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode, speed: 0.1)
                 } label: {
                     Image(systemName: "tortoise.fill")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.background)
-                        .background(.green)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .detailViewButton(color: .green)
                         .symbolEffect(.pulse.wholeSymbol, options: ttsViewModel.isSpeakingSlow ? .repeating : .default, value: ttsViewModel.isSpeakingSlow)
                 }
                 
@@ -64,11 +60,7 @@ struct DetailView: View {
                     ttsViewModel.readTranslation(text: savedTranslation.translation, language: savedTranslation.targetLanguage.ttsCode, speed: 0.5)
                 } label: {
                     Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.background)
-                        .background(.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .detailViewButton(color: .blue)
                         .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .default, value: ttsViewModel.isSpeaking)
                 }
                 .contentTransition(.symbolEffect(.replace))
@@ -89,11 +81,7 @@ struct DetailView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "trash.fill")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.background)
-                        .background(.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .detailViewButton(color: .red)
                 }
             }
         }
