@@ -10,6 +10,7 @@ import SwiftUI
 struct PasswordTextField: View {
     
     @Binding var password: String
+    var focus: FocusState<Bool>.Binding
     @State private var showingPassword = false
     
     let prompt: String
@@ -21,10 +22,13 @@ struct PasswordTextField: View {
                     SecureField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
                         .autocorrectionDisabled()
+                        .focused(focus)
+                        
                 } else {
                     TextField("Password", text: $password, prompt: Text(prompt).foregroundStyle(.gray.secondary))
                         .padding()
                         .autocorrectionDisabled()
+                        .focused(focus)
                 }
             }
             .foregroundStyle(.black)
@@ -42,5 +46,6 @@ struct PasswordTextField: View {
 }
 
 //#Preview {
-//    return PasswordTextField(password: .constant("password"), prompt: "Type your password here")
+//    let focus = false
+//    return PasswordTextField(password: .constant("password"), focus: focus, prompt: "Type your password here")
 //}

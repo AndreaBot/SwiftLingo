@@ -29,7 +29,7 @@ struct LoginView: View {
                     .autocorrectionDisabled()
                     .keyboardType(.emailAddress)
                     .focused($focus)
-                PasswordTextField(password: $viewModel.password, prompt: "Enter your password")
+                PasswordTextField(password: $viewModel.password, focus: $focus, prompt: "Enter your password")
                 Button {
                     viewModel.showingSendLinkAlert = true
                 } label: {
@@ -63,7 +63,6 @@ struct LoginView: View {
         .padding()
         .onAppear {
             viewModel.resetFields()
-            focus = true
         }
         .alert("Error", isPresented: $viewModel.showingErrorAlert) {} message: {
             Text(viewModel.alertMessage)

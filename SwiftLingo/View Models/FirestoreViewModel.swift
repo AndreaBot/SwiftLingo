@@ -7,7 +7,7 @@
 
 import FirebaseAuth
 import FirebaseFirestore
-import Foundation
+import SwiftUI
 
 @Observable
 final class FirestoreViewModel {
@@ -20,6 +20,7 @@ final class FirestoreViewModel {
     var alertMessage = ""
     var showingAlert = false
     var translationSaved = false
+    var showingConfirmationMessage = false
     
     func fetchTranslations() {
         if let currentUser = currentUser {
@@ -86,6 +87,8 @@ final class FirestoreViewModel {
                     }
                 } else {
                     self.translationSaved = true
+                        self.showAndHideMessage()
+                
                 }
             }
         }
@@ -103,6 +106,17 @@ final class FirestoreViewModel {
                     }
                 }
             }
+        }
+    }
+    
+    func showAndHideMessage() {
+        withAnimation(.smooth(duration: 0.6)) {
+            showingConfirmationMessage = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation(.smooth(duration: 0.6)) {
+                self.showingConfirmationMessage = false
+           }
         }
     }
 }

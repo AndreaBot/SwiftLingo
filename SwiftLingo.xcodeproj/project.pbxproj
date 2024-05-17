@@ -11,6 +11,7 @@
 		621B11BD2BF6945D000088B9 /* FirebaseAuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BC2BF6945D000088B9 /* FirebaseAuthErrors.swift */; };
 		621B11BF2BF6AD4B000088B9 /* FirestoreErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */; };
 		621B11C12BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11C02BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift */; };
+		621B11C62BF806B4000088B9 /* ConfirmationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */; };
 		621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */; };
 		621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */; };
 		621EFE052BE41DB6004F44B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621EFE042BE41DB6004F44B5 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		621B11BC2BF6945D000088B9 /* FirebaseAuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthErrors.swift; sourceTree = "<group>"; };
 		621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreErrors.swift; sourceTree = "<group>"; };
 		621B11C02BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailViewButtonModifier.swift; sourceTree = "<group>"; };
+		621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationMessageView.swift; sourceTree = "<group>"; };
 		621EFDFD2BE41DB4004F44B5 /* SwiftLingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoApp.swift; sourceTree = "<group>"; };
 		621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				624CE0022BE6359800ACEED2 /* PasswordRating.swift */,
 				62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */,
 				62EDE4E92BEAF47F000BE168 /* DismissToolbar.swift */,
+				621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,
 				62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */,
 				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,
+				621B11C62BF806B4000088B9 /* ConfirmationMessageView.swift in Sources */,
 				62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */,
 				62EDE4DC2BE8DB65000BE168 /* FirestoreViewModel.swift in Sources */,
 				624CDFF32BE56C5900ACEED2 /* TranslatorViewModel.swift in Sources */,
