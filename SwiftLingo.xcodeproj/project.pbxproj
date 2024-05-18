@@ -32,6 +32,7 @@
 		624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */; };
 		624CE0002BE6339F00ACEED2 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */; };
 		624CE0032BE6359800ACEED2 /* PasswordRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CE0022BE6359800ACEED2 /* PasswordRating.swift */; };
+		6257373D2BF8CE4A0043BF02 /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257373C2BF8CE4A0043BF02 /* CustomDivider.swift */; };
 		62EDE4BA2BE776BF000BE168 /* SwiftLingoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */; };
 		62EDE4D62BE8CA90000BE168 /* SavedTranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */; };
 		62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */; };
@@ -73,6 +74,7 @@
 		624CDFF82BE62C0800ACEED2 /* TTSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSViewModel.swift; sourceTree = "<group>"; };
 		624CDFFF2BE6339F00ACEED2 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		624CE0022BE6359800ACEED2 /* PasswordRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRating.swift; sourceTree = "<group>"; };
+		6257373C2BF8CE4A0043BF02 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		62EDE4B92BE776BF000BE168 /* SwiftLingoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoView.swift; sourceTree = "<group>"; };
 		62EDE4D52BE8CA90000BE168 /* SavedTranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationsView.swift; sourceTree = "<group>"; };
 		62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslationComponent.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */,
 				621B11CC2BF8BAC3000088B9 /* TranslatorUtilityButtons.swift */,
 				621B11CE2BF8BDD3000088B9 /* LanguagesPickersStackView.swift */,
+				6257373C2BF8CE4A0043BF02 /* CustomDivider.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */,
 				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,
 				621B11C62BF806B4000088B9 /* ConfirmationMessageView.swift in Sources */,
+				6257373D2BF8CE4A0043BF02 /* CustomDivider.swift in Sources */,
 				62EDE4D82BE8CBCE000BE168 /* SavedTranslationComponent.swift in Sources */,
 				621B11D12BF8BE8C000088B9 /* CustomLanguagePickerModifier.swift in Sources */,
 				621B11CF2BF8BDD3000088B9 /* LanguagesPickersStackView.swift in Sources */,

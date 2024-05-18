@@ -28,7 +28,7 @@ struct DetailView: View {
             VStack {
                 Text("\(savedTranslation.sourceLanguage.flag) \(savedTranslation.sourceLanguage.id)")
                     .fontWeight(.semibold)
-                Divider()
+                CustomDivider()
                     .background(.blue)
                     .frame(height: 10)
                 Text(savedTranslation.textToTranslate)
@@ -39,7 +39,7 @@ struct DetailView: View {
             VStack {
                 Text("\(savedTranslation.targetLanguage.flag) \(savedTranslation.targetLanguage.id)")
                     .fontWeight(.semibold)
-                Divider()
+                CustomDivider()
                     .background(.blue)
                     .frame(height: 10)
                 Text(savedTranslation.translation)
