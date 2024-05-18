@@ -12,6 +12,7 @@
 		621B11BF2BF6AD4B000088B9 /* FirestoreErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */; };
 		621B11C12BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11C02BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift */; };
 		621B11C62BF806B4000088B9 /* ConfirmationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */; };
+		621B11CB2BF8B45C000088B9 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621B11CA2BF8B45C000088B9 /* test.swift */; };
 		621EFE012BE41DB4004F44B5 /* SwiftLingoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */; };
 		621EFE032BE41DB4004F44B5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */; };
 		621EFE052BE41DB6004F44B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621EFE042BE41DB6004F44B5 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		621B11BE2BF6AD4B000088B9 /* FirestoreErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreErrors.swift; sourceTree = "<group>"; };
 		621B11C02BF7FDF7000088B9 /* CustomDetailViewButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailViewButtonModifier.swift; sourceTree = "<group>"; };
 		621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationMessageView.swift; sourceTree = "<group>"; };
+		621B11CA2BF8B45C000088B9 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		621EFDFD2BE41DB4004F44B5 /* SwiftLingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621EFE002BE41DB4004F44B5 /* SwiftLingoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLingoApp.swift; sourceTree = "<group>"; };
 		621EFE022BE41DB4004F44B5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				62EDE4D72BE8CBCE000BE168 /* SavedTranslationComponent.swift */,
 				62EDE4E92BEAF47F000BE168 /* DismissToolbar.swift */,
 				621B11C52BF806B4000088B9 /* ConfirmationMessageView.swift */,
+				621B11CA2BF8B45C000088B9 /* test.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				624CDFF72BE57E4B00ACEED2 /* TranslationData.swift in Sources */,
 				621B11BB2BF29ECE000088B9 /* MenuView.swift in Sources */,
 				624CDFF92BE62C0800ACEED2 /* TTSViewModel.swift in Sources */,
+				621B11CB2BF8B45C000088B9 /* test.swift in Sources */,
 				621EFE132BE42563004F44B5 /* LoginOptionsView.swift in Sources */,
 				62EDE4DE2BE8E175000BE168 /* DetailView.swift in Sources */,
 				624CDFF12BE5689200ACEED2 /* TranslatorView.swift in Sources */,

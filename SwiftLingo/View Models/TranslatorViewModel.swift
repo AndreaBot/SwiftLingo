@@ -50,6 +50,9 @@ final class TranslatorViewModel {
     var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
     var translation = ""
     
+    var isLoadingTranslation = false
+    // var isAnimatingSymbol = false
+    
     
     //MARK: - API Call
     
@@ -61,7 +64,6 @@ final class TranslatorViewModel {
     
     
     func getTranslation(text: String, source: String, target: String) async {
-        
         let parameters = [
             "text": text,
             "source": source,
@@ -77,32 +79,29 @@ final class TranslatorViewModel {
         request.allHTTPHeaderFields = headers
         request.httpBody = postData! as Data
         
+        self.isLoadingTranslation = true
+        
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
                 print(error as Any)
-            }
-            if let safeData = data {
+            } else if let safeData = data {
                 if let translatedText = self.parseJSON(safeData) {
                     self.translation = translatedText
+                    self.isLoadingTranslation = false
                     self.appendToHistoryUserdefaults()
-                    
                 }
             }
         })
-        
         dataTask.resume()
     }
     
-    
     func parseJSON(_ translationData: Data) -> String? {
-        
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(TranslationData.self, from: translationData)
             let text = decodedData.text
             return text
-            
         } catch {
             print(error)
             return nil
@@ -125,6 +124,7 @@ final class TranslatorViewModel {
         sourceLanguage = targetLanguage
         targetLanguage = sourceLanguageCopy
     }
+    
     
     //MARK: - UserDefaults (HistoryView)
     
@@ -196,17 +196,17 @@ final class TranslatorViewModel {
         }
     }
     
-//    func loadDefaultValue<T: Codable>(key: String) -> T? {
-//        if let savedData = userDef.data(forKey: key) {
-//            do {
-//                let decoded = try JSONDecoder().decode(T.self, from: savedData)
-//                return decoded
-//            } catch {
-//                print(error)
-//                return nil
-//            }
-//        }
-//        return nil
-//    }
+    //    func loadDefaultValue<T: Codable>(key: String) -> T? {
+    //        if let savedData = userDef.data(forKey: key) {
+    //            do {
+    //                let decoded = try JSONDecoder().decode(T.self, from: savedData)
+    //                return decoded
+    //            } catch {
+    //                print(error)
+    //                return nil
+    //            }
+    //        }
+    //        return nil
+    //    }
 }
 

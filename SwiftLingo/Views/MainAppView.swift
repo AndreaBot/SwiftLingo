@@ -26,7 +26,7 @@ struct MainAppView: View {
         TabView(selection: $selectedTab) {
             TranslatorView(firestoreViewModel: $firestoreViewModel, translatorViewModel: $translatorViewModel)
                 .tabItem {
-                    Label("SwiftLingo", systemImage: "swift")
+                    Label("Translator", systemImage: "bubble.left.and.text.bubble.right")
                 }
                 .tag(0)
             
@@ -75,6 +75,7 @@ struct MainAppView: View {
     }
 }
 
-//#Preview {
-//    MainAppView(path: .constant([.loginOptions, .mainAppView]))
-//}
+#Preview {
+    @State var viewModel = FirebaseAuthViewModel()
+    return MainAppView(viewModel: $viewModel)
+}

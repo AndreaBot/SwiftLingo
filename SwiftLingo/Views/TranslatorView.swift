@@ -15,6 +15,8 @@ struct TranslatorView: View {
     @State private var ttsViewModel = TTSViewModel()
     @FocusState var focus: Bool
     
+    @State private var isAnimatingPlaceholder = false
+    
     
     var body: some View {
         NavigationView {
@@ -61,7 +63,7 @@ struct TranslatorView: View {
                             
                             Button {
                                 Task {
-                                  await  firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
+                                    await  firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
                                 }
                             } label: {
                                 Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
@@ -72,13 +74,25 @@ struct TranslatorView: View {
                             .contentTransition(.symbolEffect(.replace))
                         }
                         
-                        TextEditor(text: $translatorViewModel.translation)
-                            .disabled(true)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(.clear)
-                                    .stroke(.blue, lineWidth: 2 )
+                        ZStack(alignment: .topLeading) {
+                            TextEditor(text: $translatorViewModel.translation)
+                                .disabled(true)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(.clear)
+                                        .stroke(.blue, lineWidth: 2 )
+                                }
+                            if translatorViewModel.isLoadingTranslation  {
+                                Image(systemName: "ellipsis")
+                                    .font(.headline)
+                                    .padding()
+                                    .symbolEffect(.variableColor.iterative.hideInactiveLayers.nonReversing, options: .repeating, value: isAnimatingPlaceholder)
+                                    .transition(.opacity)
+                                    .onAppear {
+                                        isAnimatingPlaceholder = true
+                                    }
                             }
+                        }
                     }
                     
                     VStack(spacing: 20) {
