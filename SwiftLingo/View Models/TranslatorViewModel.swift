@@ -48,7 +48,7 @@ final class TranslatorViewModel {
     var textToTranslate = ""
     var sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
     var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
-    var translation = "aa"
+    var translation = ""
     
     var isLoadingTranslation = false
     
