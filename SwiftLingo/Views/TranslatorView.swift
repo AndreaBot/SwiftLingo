@@ -58,6 +58,9 @@ struct TranslatorView: View {
                                     .onAppear {
                                         isAnimatingPlaceholder = true
                                     }
+                                    .onDisappear {
+                                        isAnimatingPlaceholder = false
+                                    }
                             }
                         }
                     }
@@ -108,9 +111,11 @@ struct TranslatorView: View {
             }
             .onChange(of: translatorViewModel.sourceLanguage) { _, _ in
                 translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.sourceLanguage, key: "defaultSourceLanguage")
+                translatorViewModel.translation = ""
             }
             .onChange(of: translatorViewModel.targetLanguage) { _, _ in
                 translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.targetLanguage, key: "defaultTargetLanguage")
+                translatorViewModel.translation = ""
             }
             .onChange(of: translatorViewModel.history) { _, _ in
                 translatorViewModel.setDefaultValue(valueToStore: translatorViewModel.history, key: "history")

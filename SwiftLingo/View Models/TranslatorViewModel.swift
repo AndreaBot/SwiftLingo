@@ -48,7 +48,7 @@ final class TranslatorViewModel {
     var textToTranslate = ""
     var sourceLanguage: LanguageModel = .init(id: "English", flag: "🇬🇧", sourceCode: "EN", targetCode: "EN-GB", ttsCode: "en-GB")
     var targetLanguage: LanguageModel = .init(id: "Italian", flag: "🇮🇹", sourceCode: "IT", targetCode: "IT", ttsCode: "it-IT")
-    var translation = ""
+    var translation = "aa"
     
     var isLoadingTranslation = false
     
@@ -184,7 +184,7 @@ final class TranslatorViewModel {
         }
     }
     
-    //MARK: - Reusable Encoding functions
+    //MARK: - Reusable Encoding function
     
     func setDefaultValue<T: Codable>(valueToStore: T, key: String) {
         do {
@@ -194,18 +194,5 @@ final class TranslatorViewModel {
             print(error)
         }
     }
-    
-    //    func loadDefaultValue<T: Codable>(key: String) -> T? {
-    //        if let savedData = userDef.data(forKey: key) {
-    //            do {
-    //                let decoded = try JSONDecoder().decode(T.self, from: savedData)
-    //                return decoded
-    //            } catch {
-    //                print(error)
-    //                return nil
-    //            }
-    //        }
-    //        return nil
-    //    }
 }
 
