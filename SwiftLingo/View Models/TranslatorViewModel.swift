@@ -51,7 +51,6 @@ final class TranslatorViewModel {
     var translation = ""
     
     var isLoadingTranslation = false
-    // var isAnimatingSymbol = false
     
     
     //MARK: - API Call

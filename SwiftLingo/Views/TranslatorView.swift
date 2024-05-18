@@ -37,41 +37,8 @@ struct TranslatorView: View {
                     VStack(alignment: .leading) {
                         HStack(spacing: 15) {
                             Text("Translation")
-                            
                             Spacer()
-                            
-                            Button {
-                                ttsViewModel.readTranslation(text: translatorViewModel.translation, language: translatorViewModel.targetLanguage.ttsCode, speed: 0.5)
-                            } label: {
-                                Image(systemName: ttsViewModel.isSpeaking ? "speaker.wave.3.fill" : "speaker")
-                                    .fontWeight(.medium)
-                                    .tint(translatorViewModel.translation.isEmpty ? .primary : .blue)
-                                    .symbolEffect(ttsViewModel.isSpeaking ? .variableColor.iterative.dimInactiveLayers.nonReversing : .variableColor, options: ttsViewModel.isSpeaking ? .repeating : .nonRepeating, value: ttsViewModel.isSpeaking)
-                            }
-                            .contentTransition(.symbolEffect(.replace))
-                            .disabled(translatorViewModel.translation.isEmpty)
-                            
-                            Button {
-                                ttsViewModel.readTranslation(text: translatorViewModel.translation, language: translatorViewModel.targetLanguage.ttsCode, speed: 0.1)
-                            } label: {
-                                Image(systemName: "tortoise")
-                                    .fontWeight(.medium)
-                                    .tint(translatorViewModel.translation.isEmpty ? .primary : .green)
-                                    .symbolEffect(.pulse.wholeSymbol, options: ttsViewModel.isSpeakingSlow ? .repeating : .default, value: ttsViewModel.isSpeakingSlow)
-                            }
-                            .disabled(translatorViewModel.translation.isEmpty)
-                            
-                            Button {
-                                Task {
-                                    await  firestoreViewModel.saveTranslation(sourceLanguage: translatorViewModel.sourceLanguage.id, textToTranslate: translatorViewModel.textToTranslate, targetLanguage: translatorViewModel.targetLanguage.id, translation: translatorViewModel.translation)
-                                }
-                            } label: {
-                                Image(systemName: firestoreViewModel.translationSaved ? "heart.fill": "heart")
-                                    .fontWeight(.medium)
-                                    .tint(.red)
-                            }
-                            .disabled(translatorViewModel.translation.isEmpty)
-                            .contentTransition(.symbolEffect(.replace))
+                            TranslatorUtilityButtons(translatorViewModel: $translatorViewModel, ttsViewModel: $ttsViewModel, firestoreViewModel: $firestoreViewModel)
                         }
                         
                         ZStack(alignment: .topLeading) {
@@ -96,40 +63,7 @@ struct TranslatorView: View {
                     }
                     
                     VStack(spacing: 20) {
-                        HStack(spacing: 20) {
-                            Picker("", selection: $translatorViewModel.sourceLanguage) {
-                                ForEach(TranslatorViewModel.allLanguages.sorted()) {
-                                    Text($0.id)
-                                    
-                                        .tag($0)
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(5)
-                            .tint(.primary)
-                            .background(.secondary.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            
-                            
-                            Button {
-                                translatorViewModel.swapLanguages()
-                            } label: {
-                                Image(systemName: "arrow.left.arrow.right")
-                            }
-                            
-                            Picker("", selection: $translatorViewModel.targetLanguage) {
-                                ForEach(TranslatorViewModel.allLanguages.sorted()) {
-                                    Text($0.id)
-                                        .tag($0)
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(5)
-                            .tint(.primary)
-                            .background(.secondary.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        }
-                        .pickerStyle(.automatic)
+                        LanguagesPickersStackView(translatorViewModel: $translatorViewModel)
                         
                         Button {
                             translatorViewModel.checkForNewLines()
@@ -148,7 +82,6 @@ struct TranslatorView: View {
                     }
                 }
                 .padding()
-                
                 
                 if firestoreViewModel.showingConfirmationMessage {
                     ConfirmationMessageView(message: "Translation saved successfully!")
