@@ -19,7 +19,7 @@ struct MainAppView: View {
     @State private var showingMenu = false
     
     @State private var selectedTab = 0
-    @State private var screenTitles = ["Translator", "My Translations"]
+    @State private var screenTitles = ["Translator", "Saved translations"]
     
     
     var body: some View {
