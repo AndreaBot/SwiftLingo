@@ -18,6 +18,6 @@ struct ConfirmationMessageView: View {
     }
 }
 
-//#Preview {
-//    ConfirmationMessageView(message: "This is a test message")
-//}
+#Preview {
+    ConfirmationMessageView(message: "This is a test message")
+}

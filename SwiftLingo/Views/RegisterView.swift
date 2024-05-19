@@ -76,6 +76,8 @@ struct RegisterView: View {
     }
 }
 
-//#Preview {
-//    RegisterView(path: .constant([.loginOptions, .registerView]))
-//}
+#Preview {
+    @State var authViewModel = FirebaseAuthViewModel()
+    @FocusState var focus: Bool
+    return RegisterView(viewModel: $authViewModel, focus: _focus)
+}

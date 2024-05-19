@@ -22,13 +22,6 @@ struct LanguagesPickersStackView: View {
             }
             .customLanguagePicker()
             
-//            .frame(maxWidth: .infinity)
-//            .padding(5)
-//            .tint(.primary)
-//            .background(.secondary.opacity(0.3))
-//            .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            
             Button {
                 translatorViewModel.swapLanguages()
             } label: {
@@ -42,15 +35,11 @@ struct LanguagesPickersStackView: View {
                 }
             }
             .customLanguagePicker()
-//            .frame(maxWidth: .infinity)
-//            .padding(5)
-//            .tint(.primary)
-//            .background(.secondary.opacity(0.3))
-//            .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .pickerStyle(.automatic)
     }
 }
+
 
 #Preview {
     @State var translatorViewModel = TranslatorViewModel()

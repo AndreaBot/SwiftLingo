@@ -45,7 +45,7 @@ struct PasswordTextField: View {
     }
 }
 
-//#Preview {
-//    let focus = false
-//    return PasswordTextField(password: .constant("password"), focus: focus, prompt: "Type your password here")
-//}
+#Preview {
+    @FocusState var focus: Bool
+    return PasswordTextField(password: .constant("testPassword"), focus: $focus, prompt: "Type your password here")
+}

@@ -78,6 +78,6 @@ struct SavedTranslationsView: View {
     
 }
 
-//#Preview {
-//    SavedTranslationsView()
-//}
+#Preview {
+    SavedTranslationsView(firestoreViewModel: .constant(FirestoreViewModel()))
+}

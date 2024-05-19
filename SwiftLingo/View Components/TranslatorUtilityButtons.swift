@@ -51,6 +51,8 @@ struct TranslatorUtilityButtons: View {
     }
 }
 
-//#Preview {
-//    TranslatorUtilityButtons()
-//}
+#Preview {
+    @State var translatorViewModel = TranslatorViewModel()
+    translatorViewModel.translation = "a"
+    return TranslatorUtilityButtons(translatorViewModel: .constant(translatorViewModel), ttsViewModel: .constant(TTSViewModel()), firestoreViewModel: .constant(FirestoreViewModel()))
+}

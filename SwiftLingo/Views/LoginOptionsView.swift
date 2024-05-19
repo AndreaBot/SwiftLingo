@@ -53,6 +53,7 @@ struct LoginOptionsView: View {
     }
 }
 
-//#Preview {
-//    LoginOptionsView(path: .constant([.loginOptions]))
-//}
+#Preview {
+    @State var authViewModel = FirebaseAuthViewModel()
+    return LoginOptionsView(viewModel: $authViewModel)
+}

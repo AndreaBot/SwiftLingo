@@ -24,6 +24,7 @@ struct DismissToolbar: View {
     }
 }
 
-//#Preview {
-//    DismissToolbar()
-//}
+#Preview {
+    @Environment(\.dismiss) var dismiss
+    return DismissToolbar(dismissAction: dismiss)
+}

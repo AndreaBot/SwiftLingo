@@ -84,6 +84,6 @@ struct HistoryView: View {
     }
 }
 
-//#Preview {
-//    HistoryView()
-//}
+#Preview {
+    HistoryView(translatorViewModel: .constant(TranslatorViewModel()), firestoreViewModel: .constant(FirestoreViewModel()))
+}
