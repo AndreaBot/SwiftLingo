@@ -11,6 +11,8 @@ struct LoginOptionsView: View {
     
     @Binding var viewModel: FirebaseAuthViewModel
     
+    @State private var showingWelcomeMessage = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -49,6 +51,14 @@ struct LoginOptionsView: View {
                     
                 }
             }
+        }
+        .onAppear {
+            showingWelcomeMessage = true
+        }
+        //MESSAGE FOR RECRUITERS
+        .alert("Welcome 👋🏻", isPresented: $showingWelcomeMessage) {
+        } message: {
+            Text("Thank you for checking out this app! Feel free to login with the details shown on the login screen, I have also saved some sample data for that account, or create a new account too if you wish! \nI only have 50 free API calls per month so please bare that in mind when performing translations, cheers!")
         }
     }
 }

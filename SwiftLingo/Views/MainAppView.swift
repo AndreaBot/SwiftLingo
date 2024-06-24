@@ -70,7 +70,9 @@ struct MainAppView: View {
         }
         .onAppear {
             translatorViewModel.loadHistoryUserDefaults()
-            viewModel.resetFields()
+            
+            //COMMENTED OUT TO PRESERVE LOGIN DETAILS FOR RECRUITERS. IF I WAS TO SHIP THIS APP RESETTING THE FIELD WOULD PROVIDE A BETTER EXPERIENCE
+           // viewModel.resetFields()
         }
     }
 }

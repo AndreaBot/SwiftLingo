@@ -14,8 +14,8 @@ final class FirebaseAuthViewModel {
     
     var path = [NavigationScreens]()
     
-    var email = ""
-    var password = ""
+    var email = "recruiter@1.com"
+    var password = "123456"
     var passwordConfirmation = ""
     var newPassword = ""
     

@@ -61,9 +61,12 @@ struct LoginView: View {
             .customButton(fillColor: .blue, borderWidth: 0)
         }
         .padding()
-        .onAppear {
-            viewModel.resetFields()
-        }
+        
+        //COMMENTED OUT TO PRESERVE LOGIN DETAILS FOR RECRUITERS. IF I WAS TO SHIP THIS APP RESETTING THE FIELD WOULD PROVIDE A BETTER EXPERIENCE
+//        .onAppear {
+//            viewModel.resetFields()
+//        }
+        
         .alert("Error", isPresented: $viewModel.showingErrorAlert) {} message: {
             Text(viewModel.alertMessage)
         }
