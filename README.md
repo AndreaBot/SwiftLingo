@@ -5,7 +5,7 @@ SwiftLingo is a revamped version of AI Translate.
 
 Rebuilt with SwiftUI, SwiftLingo offers a more comprehensive app experience, featuring a fresh design, additional functionalities and an enhanced user experience.
 
-SwiftLingo supports translation to and from 29 languages using the DeepL Translator API (https://rapidapi.com/splintPRO/api/deepl-translator)
+SwiftLingo supports translation to and from 29 languages using the Deep Translate API (https://rapidapi.com/riyanshgupta750/api/deep-translate6)
 
 Just like AI Translate, SwiftLingo utilizes Firebase for user authentication and Firebase Firestore as its database.
 
@@ -22,7 +22,7 @@ Features in regards to user authentication and management include:
 
 <img width="220" alt="Screenshot 2024-06-08 at 10 07 09" src="https://github.com/AndreaBot/SwiftLingo/assets/128467098/50bb019a-b721-402d-94e5-97fa325a8503">
 
-Each available language is coded as a LanguageModel struct, so that each one of them as its own name, flag, translations codes and text-to-speech code:
+Each available language is coded as a LanguageModel struct, so that each one of them as its own name, flag, language code and text-to-speech code:
 
 <img width="500" alt="Screenshot 2024-06-08 at 10 58 09" src="https://github.com/AndreaBot/SwiftLingo/assets/128467098/5bb1f8f9-9eda-4195-998d-d6a5c32fb777">
 <img width="400" alt="Screenshot 2024-06-08 at 10 58 30" src="https://github.com/AndreaBot/SwiftLingo/assets/128467098/f0aa600a-f9ef-4c54-98f8-be4eb5dac54b">

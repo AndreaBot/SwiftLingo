@@ -73,8 +73,8 @@ struct TranslatorView: View {
                             Task {
                                 firestoreViewModel.translationSaved = false
                                 await translatorViewModel.getTranslation(text: translatorViewModel.textToTranslate,
-                                                                         source: translatorViewModel.sourceLanguage.sourceCode,
-                                                                         target: translatorViewModel.targetLanguage.targetCode)
+                                                                         source: translatorViewModel.sourceLanguage.languageCode,
+                                                                         target: translatorViewModel.targetLanguage.languageCode)
                             }
                         } label: {
                             Text("Translate")

@@ -14,7 +14,6 @@ struct LanguageModel: Identifiable, Hashable, Comparable, Codable {
     
     let id: String
     let flag: String
-    let sourceCode: String
-    let targetCode: String
+    let languageCode: String
     let ttsCode: String
 }

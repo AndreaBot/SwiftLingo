@@ -8,7 +8,7 @@
 import Foundation
 
 struct TranslationData: Codable {
-    let text: String
+    let result: String
 }
 
 
